@@ -907,8 +907,8 @@ li.submenus::after {
     text-transform: capitalize;
 }
 .hero-txt h1 {
-    font-size: 60px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     line-height: 1.4;
 }
 a.hero-boxed-btn {
