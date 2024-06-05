@@ -151,7 +151,7 @@ a.boxed-btn {
     text-decoration: none;
 }
 .section-summary {
-    font-size: 36px;
+    font-size: 23.8px;
     font-weight: 400;
     margin: 16px 0 47px 0;
     font-weight: 400;
@@ -571,7 +571,7 @@ ul.language-dropdown li:last-child a {
     padding: 15px 10px;
     font-size: 14px;
     text-transform: inherit;
-    color: #fff;
+    color: #0A3041;
     font-weight: 600;
     text-decoration: none;
     -webkit-transition: 0.5s;
@@ -642,7 +642,7 @@ ul.language-dropdown li:last-child a {
     top: 16px;
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
-    color: #fff;
+    color: #0A3041;
     font-size: 14px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -663,6 +663,7 @@ ul.language-dropdown li:last-child a {
     transition: 0.1s;
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
+    color: #0A3041;
 }
 .main-menu li.dropdown:hover ul.dropdown-lists {
     visibility: visible;
@@ -695,7 +696,7 @@ ul.language-dropdown li:last-child a {
 }
 .main-menu li.dropdown ul.dropdown-lists li a {
     position: relative;
-    color: #fff;
+    color: #0a3041;
     border-top: none;
     line-height: 20px;
 }
@@ -751,7 +752,7 @@ li.submenus::after {
     font-size: 14px !important;
     border: none;
     outline: 0;
-    color: #fff;
+    color: #0A3041;
     padding: 14px 12px;
     background-color: inherit;
     font: inherit;
@@ -1024,7 +1025,7 @@ a.hero-boxed-btn:hover::after {
     height: 60px;
     text-align: center;
     line-height: 60px;
-    color: #fff;
+    color: #0A3041;
     text-transform: uppercase;
     font-weight: 600;
     background-color: #0a3041;
@@ -1045,7 +1046,7 @@ a.hero-boxed-btn:hover::after {
     content: "\f101";
     position: absolute;
     font-family: "Font Awesome 5 Free";
-    font-weight: 700;
+    font-weight: 300;
     right: 50px;
     color: #fff;
     opacity: 0;
