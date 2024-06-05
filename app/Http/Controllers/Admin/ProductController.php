@@ -17,6 +17,10 @@ use App\Product;
 use App\ProductOrder;
 use Validator;
 use Session;
+use Illuminate\Support\Facades\Http;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Storage;
+
 
 class ProductController extends Controller
 {
@@ -29,6 +33,21 @@ class ProductController extends Controller
         $data['lang_id'] = $lang_id;
         return view('admin.product.index',$data);
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function type(Request $request) {
@@ -626,4 +645,111 @@ class ProductController extends Controller
         $request->session()->flash('success', 'Settings updated successfully!');
         return back();
     }
+
+
+
+
+
+
+
+
+//for synch prods
+
+public function synchroniserProducts(Request $request){
+
+    $apiUrl = env('API_CATEGORIES_URL');
+
+ $response = Http::get($apiUrl . 'ListeDePrixWeb/');
+        $produitsApi = $response->json();
+
+ // Retrieve all existing products and organize them by slug
+        $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
+
+         $notExistingProducts = Product::whereNotIn('slug', $barcodes)
+
+            ->get()
+            ->keyBy('slug');
+
+         foreach ($notExistingProducts as $notExistingProduct) {
+
+                // Check if the existing product is not found in the API l
+                    $notExistingProduct->is_publish = 0;
+
+
+
+                    $notExistingProduct->save();
+
+            }
+
+
+          $existingProducts = Product::whereIn('slug', $barcodes)
+            ->get()
+            ->keyBy('slug');
+
+$lang = Language::where('is_default', 1)->first();
+$lang_id = $lang->id;
+             foreach ($existingProducts as $existingProduct) {
+                // Check if the existing product is not found in the API list
+
+                    $existingProduct->is_publish = 1;
+
+                   // $virtualProducts->push($existingProduct);
+                    $existingProduct->save();
+
+
+            }
+
+
+               foreach ($produitsApi as $produitApi) {
+                $name = $produitApi['Libellé'];
+                $barcode = $produitApi['codeabarre'];
+            $apiunité = $produitApi['unité_lot'];
+                $apiQTEUNITE = $produitApi['QTEUNITE'];
+                $apiQTEUNITE = $produitApi['QTEUNITE'];
+
+          // Find products with matching barcode
+          if (!(isset($existingProducts[$barcode]))) {
+
+            $newProduct = new Product();
+            $newProduct->title = $name;
+            $newProduct->slug = $barcode;
+            $newProduct->language_id = $lang->id;
+            $newProduct->is_publish = 1;
+            // Set other properties accordingly based on your product model
+            $newProduct->save();
+
+
+          }
+          else {
+            $matchingProduct = $existingProducts[$barcode];
+
+            if ($matchingProduct->title != $name) {
+                $matchingProduct->title = $name;
+                $matchingProduct->save();
+                }
+
+
+
+            }
+
+            }
+
+
+
+
+ $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+    $data['lang_id'] = $lang_id;
+
+
+    return view('admin.product.index',$data);
+
+
+
+
+
+    }
+
+
+
+
 }

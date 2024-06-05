@@ -882,6 +882,9 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
 
         Route::get('/product', 'Admin\ProductController@index')->name('admin.product.index');
         Route::get('/product/type', 'Admin\ProductController@type')->name('admin.product.type');
+
+        Route::get('/product/synchroniserProducts', 'Admin\ProductController@synchroniserProducts')->name('admin.product.synchroniserProducts');
+
         Route::get('/product/create', 'Admin\ProductController@create')->name('admin.product.create');
         Route::post('/product/store', 'Admin\ProductController@store')->name('admin.product.store');
         Route::get('/product/{id}/edit', 'Admin\ProductController@edit')->name('admin.product.edit');
@@ -1381,3 +1384,4 @@ Route::group(['middleware' => ['setlang']], function () {
 Route::group(['middleware' => 'setlang'], function () {
     Route::get('/{slug}', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
 });
+

@@ -68,9 +68,12 @@ $selLang = \App\Language::where('code', request()->input('language'))->first();
                         </select>
                     @endif
                 </div>
+
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
                     <a href="{{route('admin.product.type')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Add Product</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.product.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
+                    <!-- <a href="{{route('admin.product.synchroniserProducts')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Synchroniser</a> -->
+
                 </div>
             </div>
         </div>
@@ -123,7 +126,7 @@ $selLang = \App\Language::where('code', request()->input('language'))->first();
                             <form class="d-inline-block" action="{{route('admin.product.feature')}}" id="featureForm{{$product->id}}" method="POST">
                               @csrf
                               <input type="hidden" name="product_id" value="{{$product->id}}">
-                              <select name="is_feature" id="" class="form-control form-control-sm 
+                              <select name="is_feature" id="" class="form-control form-control-sm
                               @if($product->is_feature == 1)
                               bg-success
                               @else

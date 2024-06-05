@@ -38,12 +38,12 @@ $data = \App\BasicExtra::first();
                         <ul class="nav">
                             <li>
                                 <a href="{{route('admin.editProfile')}}">
-                                    <span class="link-collapse">Edit Profile</span>
+                                    <span class="link-collapse">Modifier Profil</span>
                                 </a>
                             </li>
                             <li>
                                 <a href="{{route('admin.changePass')}}">
-                                    <span class="link-collapse">Change Password</span>
+                                    <span class="link-collapse">Changer Password</span>
                                 </a>
                             </li>
                             <li>
@@ -534,6 +534,7 @@ $data = \App\BasicExtra::first();
 @if(request()->path() == 'admin/category') show
 @elseif(request()->is('admin/category/*/edit')) show
 @elseif(request()->routeIs('admin.product.type')) show
+@elseif(request()->routeIs('admin.product.synchroniserProducts')) show
 @elseif(request()->routeIs('admin.product.create')) show
 @elseif(request()->routeIs('admin.product.index')) show
 @elseif(request()->routeIs('admin.product.edit')) show
