@@ -265,7 +265,7 @@ textarea {
 button[type="submit"],
 input[type="submit"] {
     border: none;
-    color: #fff;
+    color: #0a3041;
     padding: 18px 45px;
     display: inline-block;
     outline: 0;
@@ -280,7 +280,7 @@ input[type="submit"] {
 }
 button[type="submit"]:hover,
 input[type="submit"]:hover {
-    background-color: #fff;
+    background-color: #83C536;
     color: #0a3041;
 }
 ::-webkit-input-placeholder {
@@ -1943,7 +1943,7 @@ a.readmore-btn:hover::after {
 }
 .footer-section {
     background-color: #0a3041;
-    color: #c5dadc;
+    color: #0a3041;
 }
 .footer-logo-wrapper {
     text-align: left;
@@ -1966,7 +1966,7 @@ a.readmore-btn:hover::after {
     font-size: 18px;
     font-family: "Source Serif Pro", serif;
     font-weight: 700;
-    color: #fff;
+    color: #0A3041;
     margin-bottom: 32px;
 }
 ul.footer-links li {
@@ -1980,7 +1980,7 @@ ul.footer-links li a {
     position: relative;
     display: inline-block;
     font-size: 14px;
-    color: #c5dadc;
+    color: #63B32F;
     text-decoration: none;
     padding-left: 15px;
     -webkit-transition: 0.5s;
