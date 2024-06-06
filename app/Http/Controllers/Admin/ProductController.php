@@ -704,12 +704,13 @@ public function synchroniserProducts(Request $request){
 
 
 $featredImg = $apiPhoto;
+if( $apiPhoto != ""){
 $extFeatured = pathinfo($featredImg, PATHINFO_EXTENSION);
 $filename = uniqid() .'.'. $extFeatured;
 @copy($featredImg, 'assets/front/img/product/featured/' . $filename);
 $newProduct['feature_image'] = $filename;
 
-
+}
 
 //
 
