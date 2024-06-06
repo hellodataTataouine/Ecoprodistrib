@@ -642,84 +642,80 @@ class ProductController extends Controller
 
 //for synch prods
 
-public function synchroniserProducts(Request $request){
-
+public function synchroniserProducts(Request $request)
+{
     $apiUrl = 'http://51.83.131.79/hdcomercialeco/';
-
     $response = Http::get($apiUrl . 'ListeProduits_Links');
+    $produitsApi = $response->json();
 
+    // Retrieve all existing products and organize them by slug
+    $barcodes = collect($produitsApi)->pluck('Codeabarre')->toArray();
 
-        $produitsApi = $response->json();
-      //  dd($produitsApi);
- // Retrieve all existing products and organize them by slug
-        $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
+    $notExistingProducts = Product::whereNotIn('slug', $barcodes)
+        ->get()
+        ->keyBy('slug');
 
-         $notExistingProducts = Product::whereNotIn('slug', $barcodes)
+    foreach ($notExistingProducts as $notExistingProduct) {
+        // Set is_publish to 0 for products not found in the API list
+        $notExistingProduct->is_publish = 0;
+        $notExistingProduct->save();
+    }
 
-            ->get()
-            ->keyBy('slug');
+    $existingProducts = Product::whereIn('slug', $barcodes)
+        ->get()
+        ->keyBy('slug');
 
-         foreach ($notExistingProducts as $notExistingProduct) {
+    $lang = Language::where('is_default', 1)->first();
+    $lang_id = $lang->id;
 
-                // Check if the existing product is not found in the API l
-                    $notExistingProduct->is_publish = 0;
+    foreach ($existingProducts as $existingProduct) {
+        // Set is_publish to 1 for products found in the API list
+        $existingProduct->is_publish = 1;
+        $existingProduct->save();
+    }
 
+    // Store hashes of existing photos to avoid duplication
+    $existingPhotos = Product::pluck('feature_image')->toArray();
+    $existingPhotoHashes = [];
+    foreach ($existingPhotos as $photo) {
+        $photoPath = public_path('assets/front/img/product/featured/' . $photo);
+        if (file_exists($photoPath)) {
+            $existingPhotoHashes[md5_file($photoPath)] = $photo;
+        }
+    }
 
+    foreach ($produitsApi as $produitApi) {
+        $name = $produitApi['Libellé'];
+        $barcode = $produitApi['Codeabarre'];
+        $apiPhoto = $produitApi['MyPhoto'];
 
-                    $notExistingProduct->save();
-
-            }
-
-
-          $existingProducts = Product::whereIn('slug', $barcodes)
-            ->get()
-            ->keyBy('slug');
-
-              $lang = Language::where('is_default', 1)->first();
-              $lang_id = $lang->id;
-             foreach ($existingProducts as $existingProduct) {
-                // Check if the existing product is not found in the API list
-
-                    $existingProduct->is_publish = 1;
-
-                   // $virtualProducts->push($existingProduct);
-                    $existingProduct->save();
-
-
-            }
-
-
-               foreach ($produitsApi as $produitApi) {
-                $name = $produitApi['Libellé'];
-                $barcode = $produitApi['Codeabarre'];
-
-
-                $apiPhoto = $produitApi['MyPhoto'];
-
-          // Find products with matching barcode
-          if (!(isset($existingProducts[$barcode]))) {
+        // Check if the product already exists by slug
+        if (!isset($existingProducts[$barcode])) {
             $newProduct = new Product();
 
-//
+            // Check if the photo already exists
+            if (!empty($apiPhoto)) {
+                $featredImg = $apiPhoto;
+                $photoHash = md5_file($featredImg);
 
+                if (isset($existingPhotoHashes[$photoHash])) {
+                    // Use existing photo
+                    $newProduct['feature_image'] = $existingPhotoHashes[$photoHash];
+                } else {
+                    // Check if the photo already exists in the path
+                    $extFeatured = pathinfo($featredImg, PATHINFO_EXTENSION);
+                    $filename = uniqid() . '.' . $extFeatured;
+                    $filePath = 'assets/front/img/product/featured/' . $filename;
 
-$featredImg = $apiPhoto;
-if( $apiPhoto != ""){
-$extFeatured = pathinfo($featredImg, PATHINFO_EXTENSION);
-$filename = uniqid() .'.'. $extFeatured;
-@copy($featredImg, 'assets/front/img/product/featured/' . $filename);
-$newProduct['feature_image'] = $filename;
+                    if (!file_exists(public_path($filePath))) {
+                        @copy($featredImg, public_path($filePath));
+                    }
 
-}
-
-//
-
-
-
-
-
-
-
+                    $newProduct['feature_image'] = $filename;
+                    // Store hash of the new photo
+                    $existingPhotoHashes[$photoHash] = $filename;
+                }
+            }
 
             $newProduct->title = $name;
             $newProduct->slug = $barcode;
@@ -727,37 +723,20 @@ $newProduct['feature_image'] = $filename;
             $newProduct->is_publish = 1;
             // Set other properties accordingly based on your product model
             $newProduct->save();
-
-
-          }
-          else {
+        } else {
             $matchingProduct = $existingProducts[$barcode];
-
             if ($matchingProduct->title != $name) {
                 $matchingProduct->title = $name;
                 $matchingProduct->save();
-                }
-
-
-
             }
+        }
+    }
 
-            }
-
-
-
-
- $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+    $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
     $data['lang_id'] = $lang_id;
 
-
-    return view('admin.product.index',$data);
-
-
-
-
-
-    }
+    return view('admin.product.index', $data);
+}
 
 
 
