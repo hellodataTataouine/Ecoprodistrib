@@ -1003,6 +1003,8 @@ ul.language-dropdown li:last-child a {
     border-top: none;
 }
 
+
+
 .main-menu li.dropdown ul.dropdown-lists li a::after {
     background-color: transparent;
 }

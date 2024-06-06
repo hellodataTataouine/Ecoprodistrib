@@ -235,7 +235,7 @@
 
   @if ($bs->portfolio_section == 1)
   <!--    case section start   -->
-  <div class="case-section">
+  {{-- <div class="case-section">
      <div class="container">
         <div class="row text-center">
            <div class="col-lg-6 offset-lg-3">
@@ -267,14 +267,14 @@
            </div>
         </div>
      </div>
-  </div>
+  </div> --}}
   <!--    case section end   -->
   @endif
 
 
   @if ($bs->testimonial_section == 1)
   <!--   Testimonial section start    -->
-  <div class="testimonial-section pb-115">
+  {{-- <div class="testimonial-section pb-115">
      <div class="container">
         <div class="row text-center">
            <div class="col-lg-6 offset-lg-3">
@@ -299,14 +299,14 @@
            </div>
         </div>
      </div>
-  </div>
+  </div> --}}
   <!--   Testimonial section end    -->
   @endif
 
 
   @if ($bs->team_section == 1)
   <!--    team section start   -->
-  <div class="team-section section-padding" @if($bs->home_version != 'parallax') style="background-image: url('{{asset('assets/front/img/'.$bs->team_bg)}}'); background-size:cover;" @endif @if($bs->home_version == 'parallax') data-parallax="scroll" data-speed="0.2" data-image-src="{{asset('assets/front/img/'.$bs->team_bg)}}" @endif>
+  {{-- <div class="team-section section-padding" @if($bs->home_version != 'parallax') style="background-image: url('{{asset('assets/front/img/'.$bs->team_bg)}}'); background-size:cover;" @endif @if($bs->home_version == 'parallax') data-parallax="scroll" data-speed="0.2" data-image-src="{{asset('assets/front/img/'.$bs->team_bg)}}" @endif>
      <div class="team-content">
         <div class="container">
            <div class="row text-center">
@@ -348,14 +348,14 @@
            </div>
         </div>
      </div>
-  </div>
+  </div> --}}
   <!--    team section end   -->
   @endif
 
 
   @if ($be->pricing_section == 1)
   <!-- pricing begin -->
-  <div class="pricing-tables">
+  {{-- <div class="pricing-tables">
      <div class="container">
        <div class="row text-center">
           <div class="col-lg-6 offset-lg-3">
@@ -384,7 +384,7 @@
           @endforeach
         </div>
      </div>
-  </div>
+  </div> --}}
   <!-- pricing end -->
   @endif
 
@@ -454,7 +454,7 @@
 
   @if ($bs->partner_section == 1)
   <!--   partner section start    -->
-  <div class="partner-section">
+  {{-- <div class="partner-section">
      <div class="container {{$be->theme_version != 'dark' ? 'top-border' : ''}}">
         <div class="row">
            <div class="col-md-12">
@@ -472,7 +472,7 @@
            </div>
         </div>
      </div>
-  </div>
+  </div> --}}
   <!--   partner section end    -->
   @endif
 

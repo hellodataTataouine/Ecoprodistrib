@@ -179,7 +179,9 @@
                                 </span>
                             @endif --}}
                         </div>
+
                     </div>
+                    <a class="cart-add-link mt-3" data-href="{{route('add.cart',$product->id)}}">{{ __('Add') }}</a>
                 </div>
                   @endforeach
                   @else

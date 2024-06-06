@@ -1922,6 +1922,26 @@ a.readmore-btn::after {
     transition: 0.5s;
     margin-top: 1px;
 }
+a.cart-add-link {
+    display: block;
+    position: relative;
+    margin-top: 18px;
+    font-size: 14px;
+    background-color: #fff;
+    /* color: #ff7c08; */
+    padding: 15px;
+    text-align: center;
+    width: 100%;
+    font-weight: 600;
+    border: 2px solid;
+    border-radius: 2px;
+    cursor: pointer;
+    text-decoration: none;
+}
+a.cart-add-link:hover{
+    color: #68b33d;
+    border: 2px solid #68b33d;
+}
 a.readmore-btn:hover::after {
     opacity: 1;
     right: 12px;

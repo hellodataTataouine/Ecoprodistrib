@@ -234,6 +234,7 @@ li.active-search a {
     border: 1px solid <?php echo $color1; ?>;
     background: <?php echo $color1; ?>;
 }
+
 .cart-middle .update-cart button:hover {
     color: <?php echo $color1; ?>;
 }
