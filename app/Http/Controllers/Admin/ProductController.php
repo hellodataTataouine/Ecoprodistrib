@@ -36,20 +36,6 @@ class ProductController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function type(Request $request) {
         $data['digitalCount'] = Product::where('type', 'digital')->count();
         $data['physicalCount'] = Product::where('type', 'physical')->count();
@@ -262,6 +248,7 @@ class ProductController extends Controller
     public function edit(Request $request, $id)
     {
         $lang = Language::where('code', $request->language)->first();
+
         $abx = $lang->basic_extra;
         $categories = $lang->pcategories()->where('status',1)->get();
         $data = Product::findOrFail($id);
@@ -657,11 +644,13 @@ class ProductController extends Controller
 
 public function synchroniserProducts(Request $request){
 
-    $apiUrl = env('API_CATEGORIES_URL');
+    $apiUrl = 'http://51.83.131.79/hdcomercialeco/';
 
- $response = Http::get($apiUrl . 'ListeDePrixWeb/');
+    $response = Http::get($apiUrl . 'ListeProduits_Links');
+
+
         $produitsApi = $response->json();
-
+      //  dd($produitsApi);
  // Retrieve all existing products and organize them by slug
         $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
 
@@ -686,8 +675,8 @@ public function synchroniserProducts(Request $request){
             ->get()
             ->keyBy('slug');
 
-$lang = Language::where('is_default', 1)->first();
-$lang_id = $lang->id;
+              $lang = Language::where('is_default', 1)->first();
+              $lang_id = $lang->id;
              foreach ($existingProducts as $existingProduct) {
                 // Check if the existing product is not found in the API list
 
@@ -702,15 +691,35 @@ $lang_id = $lang->id;
 
                foreach ($produitsApi as $produitApi) {
                 $name = $produitApi['Libellé'];
-                $barcode = $produitApi['codeabarre'];
-            $apiunité = $produitApi['unité_lot'];
-                $apiQTEUNITE = $produitApi['QTEUNITE'];
-                $apiQTEUNITE = $produitApi['QTEUNITE'];
+                $barcode = $produitApi['Codeabarre'];
+
+
+                $apiPhoto = $produitApi['MyPhoto'];
 
           // Find products with matching barcode
           if (!(isset($existingProducts[$barcode]))) {
-
             $newProduct = new Product();
+
+//
+
+
+$featredImg = $apiPhoto;
+$extFeatured = pathinfo($featredImg, PATHINFO_EXTENSION);
+$filename = uniqid() .'.'. $extFeatured;
+@copy($featredImg, 'assets/front/img/product/featured/' . $filename);
+$newProduct['feature_image'] = $filename;
+
+
+
+//
+
+
+
+
+
+
+
+
             $newProduct->title = $name;
             $newProduct->slug = $barcode;
             $newProduct->language_id = $lang->id;
