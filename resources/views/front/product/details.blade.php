@@ -50,7 +50,7 @@
                 <div class="product-details-content ml-60 mt-30">
                     <div class="product-details-content-item">
                         <h4 class="title {{$bex->product_rating_system == 0 ? 'pb-0' : ''}}">{{convertUtf8($product->title)}}</h4>
-                        <div class="d-flex justify-content-between">
+                        {{-- <div class="d-flex justify-content-between">
                             @if ($bex->product_rating_system == 1)
                             <div class="rate">
                                 <div class="rating" style="width:{{$product->rating * 20}}%"></div>
@@ -67,22 +67,22 @@
                                     </h4>
                                 @endif
                             @endif
-                        </div>
+                        </div> --}}
 
-                        @if ($bex->catalog_mode == 0)
+                        {{-- @if ($bex->catalog_mode == 0)
                             <span>{{$bex->base_currency_symbol_position == 'left' ? $bex->base_currency_symbol : ''}}{{$product->current_price}}{{$bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : ''}}
                             @if (!empty($product->previous_price))
                                 <del>  <span class="prepice"> {{ $bex->base_currency_symbol_position == 'left' ? $bex->base_currency_symbol : '' }}{{$product->previous_price}}{{ $bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : '' }}</span></del>
                             @endif
                             </span>
-                        @endif
+                        @endif --}}
 
                         @if (!empty($product->summary))
                         <p>{{convertUtf8($product->summary)}}</p>
                         @endif
                     </div>
 
-                    @if ($product->type != 'digital' && $bex->catalog_mode == 0)
+                    {{-- @if ($product->type != 'digital' && $bex->catalog_mode == 0)
                     <div class="product-btns d-block d-sm-flex align-items-center mt-40">
                         <div class="product-quantity  d-flex" id="quantity">
                             <button type="button" id="sub" class="sub subclick">-</button>
@@ -90,14 +90,14 @@
                             <button type="button" id="add" class="add addclick">+</button>
                         </div>
                     </div>
-                    @endif
+                    @endif --}}
 
                     @if ($bex->catalog_mode == 0)
                         <div class="actions">
-                            <a class="main-btn cart-btn cart-link d-inline-block" data-href="{{route('add.cart',$product->id)}}">{{__('Add To Cart')}}</a>
+                            <a class="main-btn cart-btn cart-link d-inline-block" data-href="{{route('add.cart',$product->id)}}">{{__('Add for a quote')}}</a>
                             <form class="d-inline-block ml-2" method="GET" action="{{route('front.product.checkout',$product->slug)}}">
-                                <input type="hidden" value="" name="qty" id="order_click_with_qty">
-                                <button type="submit" class="main-btn checkout-btn" >{{__('Order Now')}}</button>
+                                {{-- <input type="hidden" value="" name="qty" id="order_click_with_qty"> --}}
+                                <button type="submit" class="main-btn checkout-btn" >{{__('Ask for a quote')}}</button>
                             </form>
                         </div>
                     @endif
@@ -162,18 +162,18 @@
                         <li class="nav-item">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Description')}}</a>
                         </li>
-                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                         <li class="nav-item">
                             <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('Reviews')}} ({{count($reviews)}})</a>
                         </li>
-                        @endif
+                        @endif --}}
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                 {!! replaceBaseUrl(convertUtf8($product->description)) !!}
 
                         </div>
-                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="shop-review-area">
                                 <div class="shop-review-title">
@@ -257,7 +257,7 @@
                                     @endif
                             </div>
                         </div>
-                        @endif
+                        @endif --}}
                     </div>
                 </div>
             </div>
@@ -268,9 +268,9 @@
 <!--====== SHOP TAB PART ENDS ======-->
 
 
-@if($related_product->count() > 0)
+{{-- @if($related_product->count() > 0) --}}
 <!--====== product items PART ENDS ======-->
-<div class="product-items">
+{{-- <div class="product-items">
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
@@ -321,8 +321,8 @@
         </div>
 
     </div>
-</div>
-@endif
+</div> --}}
+{{-- @endif --}}
 <!--====== product items PART ENDS ======-->
 
 @endsection

@@ -183,21 +183,21 @@ class ProductController extends Controller
 
             $product = Product::findOrFail($id);
 
-            if ($product->type != 'digital') {
-                if (!empty($cart) && array_key_exists($id, $cart)) {
-                    if ($product->stock < $cart[$id]['qty'] + $qty) {
-                        return response()->json(['error' => 'Out of Stock']);
-                    }
-                } else {
-                    if ($product->stock < $qty) {
-                        return response()->json(['error' => 'Out of Stock']);
-                    }
-                }
-            }
+            // if ($product->type != 'digital') {
+            //     if (!empty($cart) && array_key_exists($id, $cart)) {
+            //         if ($product->stock < $cart[$id]['qty'] + $qty) {
+            //             return response()->json(['error' => 'Out of Stock']);
+            //         }
+            //     } else {
+            //         if ($product->stock < $qty) {
+            //             return response()->json(['error' => 'Out of Stock']);
+            //         }
+            //     }
+            // }
 
-            if (!$product) {
-                abort(404);
-            }
+            // if (!$product) {
+            //     abort(404);
+            // }
             $cart = Session::get('cart');
             // if cart is empty then this the first product
             if (!$cart) {
@@ -213,15 +213,15 @@ class ProductController extends Controller
                 ];
 
                 Session::put('cart', $cart);
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                return response()->json(['message' => 'Produit ajouter avec succée']);
             }
 
 
             // if cart not empty then check if this product exist then increment quantity
             if (isset($cart[$id])) {
-                $cart[$id]['qty'] +=  $qty;
-                Session::put('cart', $cart);
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                // $cart[$id]['qty'] +=  $qty;
+                // Session::put('cart', $cart);
+                return response()->json(['message' => 'Ce produit déja ajouter']);
             }
 
             // if item not exist in cart then add to cart with quantity = 1
@@ -236,21 +236,21 @@ class ProductController extends Controller
 
             $id = $id;
             $product = Product::findOrFail($id);
-            if (!$product) {
-                abort(404);
-            }
+            // if (!$product) {
+            //     abort(404);
+            // }
 
-            if ($product->type != 'digital') {
-                if (!empty($cart) && array_key_exists($id, $cart)) {
-                    if ($product->stock < $cart[$id]['qty'] + 1) {
-                        return response()->json(['error' => 'Out of Stock']);
-                    }
-                } else {
-                    if ($product->stock < 1) {
-                        return response()->json(['error' => 'Out of Stock']);
-                    }
-                }
-            }
+            // if ($product->type != 'digital') {
+            //     if (!empty($cart) && array_key_exists($id, $cart)) {
+            //         if ($product->stock < $cart[$id]['qty'] + 1) {
+            //             return response()->json(['error' => 'Out of Stock']);
+            //         }
+            //     } else {
+            //         if ($product->stock < 1) {
+            //             return response()->json(['error' => 'Out of Stock']);
+            //         }
+            //     }
+            // }
 
 
             $cart = Session::get('cart');
@@ -268,7 +268,7 @@ class ProductController extends Controller
                 ];
 
                 Session::put('cart', $cart);
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                return response()->json(['message' => 'Produit ajouter avec succée']);
             }
 
             // if selected product is digital , then check if the product is already in the cart
@@ -281,9 +281,9 @@ class ProductController extends Controller
 
             // if cart not empty then check if this product exist then increment quantity
             if (isset($cart[$id])) {
-                $cart[$id]['qty']++;
-                Session::put('cart', $cart);
-                return response()->json(['message' => 'Product added to cart successfully!']);
+                // $cart[$id]['qty']++;
+                // Session::put('cart', $cart);
+                return response()->json(['message' => 'Ce produit déja ajouter']);
             }
 
             // if item not exist in cart then add to cart with quantity = 1
@@ -297,7 +297,7 @@ class ProductController extends Controller
         }
 
         Session::put('cart', $cart);
-        return response()->json(['message' => 'Product added to cart successfully!']);
+        return response()->json(['message' => 'Produit ajouter avec succée']);
     }
 
 

@@ -64,7 +64,7 @@
                             </ul>
                         </div>
                     </div>
-                    @if($be->popular_tags)
+                    {{-- @if($be->popular_tags)
                     <div class="shop-box shop-tag mt-30">
                         <div class="sidebar-title">
                             <h4 class="title">{{__('Populer Tags')}}</h4>
@@ -78,9 +78,9 @@
                             </ul>
                         </div>
                     </div>
-                    @endif
+                    @endif --}}
 
-                    @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                    {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                     <div class="shop-box shop-filter mt-30">
                         <div class="sidebar-title">
                             <h4 class="title">{{__('Filter Products')}}</h4>
@@ -120,9 +120,9 @@
                             </ul>
                         </div>
                     </div>
-                    @endif
+                    @endif --}}
 
-                    @if ($bex->catalog_mode == 0)
+                    {{-- @if ($bex->catalog_mode == 0)
                         <div class="shop-box shop-price mt-30">
                             <div class="sidebar-title">
                                 <h4 class="title">{{__('Filter By Price')}}</h4>
@@ -138,7 +138,7 @@
                             </div>
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
                 </div>
             </div>
             <div class="col-lg-9 order-1 order-lg-2">
@@ -152,32 +152,32 @@
                             <img class="lazy" data-src="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}" alt="">
                             <ul>
                                 @if ($bex->catalog_mode == 0)
-                                    <li><a href="{{route('front.product.checkout',$product->slug)}}" data-toggle="tooltip" data-placement="top" title="{{__('Order Now')}}"><i class="far fa-credit-card"></i></a></li>
+                                    {{-- <li><a href="{{route('front.product.checkout',$product->slug)}}" data-toggle="tooltip" data-placement="top" title="{{__('Order Now')}}"><i class="far fa-credit-card"></i></a></li> --}}
 
-                                    <li><a class="cart-link" data-href="{{route('add.cart',$product->id)}}" data-toggle="tooltip" data-placement="top" title="{{__('Add to Cart')}}"><i class="fas fa-shopping-cart"></i></a></li>
+                                    <li><a class="cart-link" data-href="{{route('add.cart',$product->id)}}" data-toggle="tooltip" data-placement="top" title="{{__('Add for a quote')}}"><i class="fas fa-shopping-cart"></i></a></li>
                                 @endif
 
                                 <li><a href="{{route('front.product.details',$product->slug)}}" data-toggle="tooltip" data-placement="top" title="{{__('View Details')}}"><i class="fas fa-eye"></i></a></li>
                             </ul>
                         </div>
                         <div class="shop-content text-center">
-                            @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                            {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                             <div class="rate">
                                 <div class="rating" style="width:{{$product->rating * 20}}%"></div>
                             </div>
-                            @endif
+                            @endif --}}
                             <a class="{{$bex->product_rating_system == 0 || $bex->catalog_mode == 1 ? 'mt-3' : ''}}" href="{{route('front.product.details',$product->slug)}}">
                                 {{strlen($product->title) > 40 ? mb_substr($product->title,0,40,'utf-8') . '...' : $product->title}}
                             </a> <br>
 
-                            @if ($bex->catalog_mode == 0)
+                            {{-- @if ($bex->catalog_mode == 0)
                                 <span>
                                     {{$bex->base_currency_symbol_position == 'left' ? $bex->base_currency_symbol : ''}}{{$product->current_price}}{{$bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : ''}}
                                     @if (!empty($product->previous_price))
                                         <del>  <span class="prepice"> {{ $bex->base_currency_symbol_position == 'left' ? $bex->base_currency_symbol : '' }}{{$product->previous_price}}{{ $bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : '' }}</span></del>
                                     @endif
                                 </span>
-                            @endif
+                            @endif --}}
                         </div>
                     </div>
                 </div>
@@ -319,7 +319,7 @@ $(document).on('keypress','.input-search',function(e){
         search = $('.input-search').val();
         $('#search').val(search);
         $('#search-button').click();
-        return false;  
+        return false;
     }
 
 })

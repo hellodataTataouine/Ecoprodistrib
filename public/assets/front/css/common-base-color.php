@@ -147,7 +147,7 @@ ul.breadcumb li a:hover {
     border-color: <?php echo $color; ?> !important;
 }
 .product-area .shop-search i {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .product-area .shop-sidebar .shop-box .sidebar-title .title::before {
     background: <?php echo $color; ?>;
@@ -175,28 +175,32 @@ button.filter-button {
     background-color: <?php echo $color; ?>8a;
 }
 li.active-search a {
-    color: <?php echo $color; ?> !important;
+    color: <?php echo $color1; ?> !important;
 }
 .product-area .shop-item .shop-thumb ul li a {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .product-area .shop-item .shop-content span {
     color: <?php echo $color; ?>;
 }
 .product-area .shop-item .shop-content a:hover {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .product-details-area .product-item-slide .slick-arrow {
-    background: <?php echo $color; ?>;
+    background: <?php echo $color1; ?>;
 }
 .actions .main-btn {
-    background: <?php echo $color; ?>;
+    background: <?php echo $color1; ?>;
+}
+.actions .main-btn.checkout-btn:hover {
+    background: #f3df6f;
+    color: #000;
 }
 .product-details-area .product-details-content .product-details-tags ul li {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .shop-tab-area .nav .nav-item .nav-link.active {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .shop-review-area .shop-review-form .input-box ul li a {
     color: <?php echo $color; ?>;
@@ -215,23 +219,23 @@ li.active-search a {
     color: <?php echo $color; ?>;
 }
 .product-items .shop-item .shop-content span {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .shop-tab-area .nav .nav-item .nav-link::before {
-    background: <?php echo $color; ?>;
+    background: <?php echo $color1; ?>;
 }
 .product-details-area .product-details-slide-item .slick-arrow {
-    background: <?php echo $color; ?>;
+    background: <?php echo $color1; ?>;
 }
 .cart-area .cart-table tbody .available-info .icon {
-    background: <?php echo $color; ?>;
+    background: <?php echo $color1; ?>;
 }
 .cart-middle .update-cart button {
-    border: 1px solid <?php echo $color; ?>;
-    background: <?php echo $color; ?>;
+    border: 1px solid <?php echo $color1; ?>;
+    background: <?php echo $color1; ?>;
 }
 .cart-middle .update-cart button:hover {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 a.proceed-checkout-btn {
     border: 1px solid <?php echo $color; ?>;

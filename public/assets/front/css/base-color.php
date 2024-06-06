@@ -343,7 +343,7 @@ background: <?php echo $color; ?>;
 }
 
 .pagination-nav li.page-item.active a, .pagination-nav li.page-item.active span {
-background-color: <?php echo $color; ?>;
+background-color: <?php echo $color1; ?>;
 border: 2px solid <?php echo $color; ?>;
 }
 
@@ -524,9 +524,11 @@ color: <?php echo $color; ?>;
 }
 .slicknav_nav .slicknav_row:hover {
 background: <?php echo $color; ?>;
+color: <?php echo $color1; ?>;
 }
 .slicknav_nav a:hover {
 background: <?php echo $color; ?>;
+color: <?php echo $color1; ?>;
 }
 h5.service-title {
 color: <?php echo $color; ?>;

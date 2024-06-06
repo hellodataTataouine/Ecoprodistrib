@@ -1957,7 +1957,8 @@ li.active-search a {
 }
 
 .actions .main-btn.cart-btn:hover {
-  color: #fff;
+  color: #000;
+  background: #f3df6f;
 }
 
 .actions .checkout-btn {
