@@ -26,7 +26,19 @@ class CheckPermission
 			if (!in_array($permission, $permissions)) {
 				return back();
 			}
-		}
+
+        }
+
+
+
+      
+
+        // if($request->is('admin/product/synchroniserProducts'))
+        // {
+
+
+        //     return $next($request);
+        // }
 		return $next($request);
 	}
 }

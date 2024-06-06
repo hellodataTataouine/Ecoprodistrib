@@ -70,9 +70,9 @@ $selLang = \App\Language::where('code', request()->input('language'))->first();
                 </div>
 
                 <div class="col-lg-4 offset-lg-1 mt-2 mt-lg-0">
-                    <a href="{{route('admin.product.type')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Add Product</a>
+                    <a href="{{route('admin.product.type')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> add</a>
                     <button class="btn btn-danger float-right btn-sm mr-2 d-none bulk-delete" data-href="{{route('admin.product.bulk.delete')}}"><i class="flaticon-interface-5"></i> Delete</button>
-                    <!-- <a href="{{route('admin.product.synchroniserProducts')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Synchroniser</a> -->
+                    <a href="{{route('admin.product.synchroniserProducts')}}" class="btn btn-primary float-right btn-sm"><i class="fas fa-plus"></i> Synchroniser</a>
 
                 </div>
             </div>

@@ -36,20 +36,6 @@ class ProductController extends Controller
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public function type(Request $request) {
         $data['digitalCount'] = Product::where('type', 'digital')->count();
         $data['physicalCount'] = Product::where('type', 'physical')->count();
@@ -262,6 +248,7 @@ class ProductController extends Controller
     public function edit(Request $request, $id)
     {
         $lang = Language::where('code', $request->language)->first();
+
         $abx = $lang->basic_extra;
         $categories = $lang->pcategories()->where('status',1)->get();
         $data = Product::findOrFail($id);
@@ -655,99 +642,108 @@ class ProductController extends Controller
 
 //for synch prods
 
-public function synchroniserProducts(Request $request){
+public function synchroniserProducts(Request $request)
+{
+    $apiUrl = 'http://51.83.131.79/hdcomercialeco/';
+    $response = Http::get($apiUrl . 'ListeProduits_Links');
+    $produitsApi = $response->json();
 
-    $apiUrl = env('API_CATEGORIES_URL');
+    // Retrieve all existing products and organize them by slug
+    $barcodes = collect($produitsApi)->pluck('Codeabarre')->toArray();
 
- $response = Http::get($apiUrl . 'ListeDePrixWeb/');
-        $produitsApi = $response->json();
+    $notExistingProducts = Product::whereNotIn('slug', $barcodes)
+        ->get()
+        ->keyBy('slug');
 
- // Retrieve all existing products and organize them by slug
-        $barcodes = collect($produitsApi)->pluck('codeabarre')->toArray();
+    foreach ($notExistingProducts as $notExistingProduct) {
+        // Set is_publish to 0 for products not found in the API list
+        $notExistingProduct->is_publish = 0;
+        $notExistingProduct->save();
+    }
 
-         $notExistingProducts = Product::whereNotIn('slug', $barcodes)
+    $existingProducts = Product::whereIn('slug', $barcodes)
+        ->get()
+        ->keyBy('slug');
 
-            ->get()
-            ->keyBy('slug');
+    $lang = Language::where('is_default', 1)->first();
+    $lang_id = $lang->id;
 
-         foreach ($notExistingProducts as $notExistingProduct) {
+    foreach ($existingProducts as $existingProduct) {
+        // Set is_publish to 1 for products found in the API list
+        $existingProduct->is_publish = 1;
+        $existingProduct->save();
+    }
 
-                // Check if the existing product is not found in the API l
-                    $notExistingProduct->is_publish = 0;
+    // Store hashes of existing photos to avoid duplication
+    $existingPhotos = Product::pluck('feature_image')->toArray();
+    $existingPhotoHashes = [];
+    foreach ($existingPhotos as $photo) {
+        $photoPath = public_path('assets/front/img/product/featured/' . $photo);
+        if (file_exists($photoPath) && is_file($photoPath)) {
+            $existingPhotoHashes[md5_file($photoPath)] = $photo;
+        }
+    }
 
+    foreach ($produitsApi as $produitApi) {
+        $name = $produitApi['Libellé'];
+        $barcode = $produitApi['Codeabarre'];
+        $apiPhoto = $produitApi['MyPhoto'];
 
-
-                    $notExistingProduct->save();
-
-            }
-
-
-          $existingProducts = Product::whereIn('slug', $barcodes)
-            ->get()
-            ->keyBy('slug');
-
-$lang = Language::where('is_default', 1)->first();
-$lang_id = $lang->id;
-             foreach ($existingProducts as $existingProduct) {
-                // Check if the existing product is not found in the API list
-
-                    $existingProduct->is_publish = 1;
-
-                   // $virtualProducts->push($existingProduct);
-                    $existingProduct->save();
-
-
-            }
-
-
-               foreach ($produitsApi as $produitApi) {
-                $name = $produitApi['Libellé'];
-                $barcode = $produitApi['codeabarre'];
-            $apiunité = $produitApi['unité_lot'];
-                $apiQTEUNITE = $produitApi['QTEUNITE'];
-                $apiQTEUNITE = $produitApi['QTEUNITE'];
-
-          // Find products with matching barcode
-          if (!(isset($existingProducts[$barcode]))) {
-
+        // Check if the product already exists by slug
+        if (!isset($existingProducts[$barcode])) {
             $newProduct = new Product();
+
+            // Check if the photo URL is not empty and is a valid URL
+            if (!empty($apiPhoto) && filter_var($apiPhoto, FILTER_VALIDATE_URL)) {
+                // Download the photo content
+                $photoContent = @file_get_contents($apiPhoto);
+                if ($photoContent !== false) {
+                    // Compute the MD5 hash of the photo content
+                    $photoHash = md5($photoContent);
+
+                    if (isset($existingPhotoHashes[$photoHash])) {
+                        // Use existing photo
+                        $newProduct['feature_image'] = $existingPhotoHashes[$photoHash];
+                    } else {
+                        // Save new photo
+                        $extFeatured = pathinfo(parse_url($apiPhoto, PHP_URL_PATH), PATHINFO_EXTENSION);
+                        $filename = uniqid() . '.' . $extFeatured;
+                        $filePath = public_path('assets/front/img/product/featured/' . $filename);
+
+                        // Ensure the directory exists
+                        if (!file_exists(dirname($filePath))) {
+                            mkdir(dirname($filePath), 0755, true);
+                        }
+
+                        file_put_contents($filePath, $photoContent);
+                        $newProduct['feature_image'] = $filename;
+
+                        // Store hash of the new photo
+                        $existingPhotoHashes[$photoHash] = $filename;
+                    }
+                }
+            }
+
             $newProduct->title = $name;
             $newProduct->slug = $barcode;
             $newProduct->language_id = $lang->id;
             $newProduct->is_publish = 1;
             // Set other properties accordingly based on your product model
             $newProduct->save();
-
-
-          }
-          else {
+        } else {
             $matchingProduct = $existingProducts[$barcode];
-
             if ($matchingProduct->title != $name) {
                 $matchingProduct->title = $name;
                 $matchingProduct->save();
-                }
-
-
-
             }
+        }
+    }
 
-            }
-
-
-
-
- $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
+    $data['products'] = Product::where('language_id', $lang_id)->orderBy('id', 'DESC')->get();
     $data['lang_id'] = $lang_id;
 
-
-    return view('admin.product.index',$data);
-
-
-
-
-
-    }
+    return view('admin.product.index', $data);
+}
 
 
 

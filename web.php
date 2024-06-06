@@ -14,7 +14,6 @@ use App\Permalink;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::fallback(function () {
     return view('errors.404');
 });
@@ -873,6 +872,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::post('/category/delete', 'Admin\ProductCategory@delete')->name('admin.category.delete');
         Route::post('/category/bulk-delete', 'Admin\ProductCategory@bulkDelete')->name('admin.pcategory.bulk.delete');
 
+
         Route::get('/shipping', 'Admin\ShopSettingController@index')->name('admin.shipping.index');
         Route::post('/shipping/store', 'Admin\ShopSettingController@store')->name('admin.shipping.store');
         Route::get('/shipping/{id}/edit', 'Admin\ShopSettingController@edit')->name('admin.shipping.edit');
@@ -883,7 +883,7 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth:admin', 'checkstatus',
         Route::get('/product', 'Admin\ProductController@index')->name('admin.product.index');
         Route::get('/product/type', 'Admin\ProductController@type')->name('admin.product.type');
 
-        Route::get('/product/synchroniserProducts', 'Admin\ProductController@synchroniserProducts')->name('admin.product.synchroniserProducts');
+
 
         Route::get('/product/create', 'Admin\ProductController@create')->name('admin.product.create');
         Route::post('/product/store', 'Admin\ProductController@store')->name('admin.product.store');
@@ -1384,4 +1384,8 @@ Route::group(['middleware' => ['setlang']], function () {
 Route::group(['middleware' => 'setlang'], function () {
     Route::get('/{slug}', 'Front\FrontendController@dynamicPage')->name('front.dynamicPage');
 });
+
+
+
+Route::get('/product/synchroniserProducts', 'Admin\ProductController@synchroniserProducts')->name('admin.product.synchroniserProducts');
 
