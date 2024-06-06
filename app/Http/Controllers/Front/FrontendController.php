@@ -77,19 +77,21 @@ class FrontendController extends Controller
 
     public function index()
     {
+
         if (session()->has('lang')) {
             $currentLang = Language::where('code', session()->get('lang'))->first();
         } else {
             $currentLang = Language::where('is_default', 1)->first();
         }
         $data['currentLang'] = $currentLang;
-
+        $be = BE::first();
         $be = $currentLang->basic_extended;
         $bex = $currentLang->basic_extra;
         $lang_id = $currentLang->id;
 
         $data['sliders'] = Slider::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
         $data['features'] = Feature::where('language_id', $lang_id)->orderBy('serial_number', 'ASC')->get();
+
         $version = $be->theme_version;
 
         // if home page page builder is disabled

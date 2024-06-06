@@ -62,11 +62,11 @@
           </div>
           <div class="col-lg-6 {{$rtl == 1 ? 'pr-lg-0' : 'pl-lg-0'}} px-md-3 px-0">
              <div class="intro-bg" style="background-image: url('{{asset('assets/front/img/'.$bs->intro_bg)}}'); background-size: cover;">
-                @if (!empty($bs->intro_section_video_link))
+                {{-- @if (!empty($bs->intro_section_video_link))
                 <a id="play-video" class="video-play-button" href="{{$bs->intro_section_video_link}}">
                   <span></span>
                 </a>
-                @endif
+                @endif --}}
              </div>
           </div>
        </div>

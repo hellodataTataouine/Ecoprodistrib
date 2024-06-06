@@ -138,6 +138,7 @@ body {
 .inner-container {
     display: table-cell;
     vertical-align: middle;
+    color: #68b33d;
 }
 a.boxed-btn {
     padding: 20px;
@@ -151,7 +152,7 @@ a.boxed-btn {
     text-decoration: none;
 }
 .section-summary {
-    font-size: 36px;
+    font-size: 23.8px;
     font-weight: 400;
     margin: 16px 0 47px 0;
     font-weight: 400;
@@ -265,7 +266,7 @@ textarea {
 button[type="submit"],
 input[type="submit"] {
     border: none;
-    color: #fff;
+    color: #0a3041;
     padding: 18px 45px;
     display: inline-block;
     outline: 0;
@@ -280,7 +281,7 @@ input[type="submit"] {
 }
 button[type="submit"]:hover,
 input[type="submit"]:hover {
-    background-color: #fff;
+    background-color: #83C536;
     color: #0a3041;
 }
 ::-webkit-input-placeholder {
@@ -505,7 +506,7 @@ ul.language-dropdown li:last-child a {
     vertical-align: middle;
 }
 .logo-wrapper img {
-    max-width: 150px;
+    max-width: 245px;
     max-height: 60px;
 }
 #mobileMenu {
@@ -569,7 +570,7 @@ ul.language-dropdown li:last-child a {
     display: block;
     position: relative;
     padding: 15px 10px;
-    font-size: 14px;
+    font-size: 17px;
     text-transform: inherit;
     color: #fff;
     font-weight: 600;
@@ -616,6 +617,8 @@ ul.language-dropdown li:last-child a {
     color: #25d06f;
 }
 .main-menu li a.boxed-btn {
+    background-color: #fff;
+    color: #68b33d;
     font-weight: 600;
     padding: 20px;
     margin-left: 20px;
@@ -624,9 +627,9 @@ ul.language-dropdown li:last-child a {
     border: 1px solid #25d06f;
 }
 .main-menu li a.boxed-btn:hover {
-    background-color: #fff;
+    background-color: #68b33d;
     border: 1px solid #25d06f;
-    color: #25d06f;
+    color: #68b33d;
 }
 .main-menu li.dropdown {
     position: relative;
@@ -663,6 +666,7 @@ ul.language-dropdown li:last-child a {
     transition: 0.1s;
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
+    color: #fff;
 }
 .main-menu li.dropdown:hover ul.dropdown-lists {
     visibility: visible;
@@ -748,7 +752,7 @@ li.submenus::after {
     display: inline-block;
 }
 .mega-dropdown .dropbtn {
-    font-size: 14px !important;
+    font-size: 17px !important;
     border: none;
     outline: 0;
     color: #fff;
@@ -907,8 +911,8 @@ li.submenus::after {
     text-transform: capitalize;
 }
 .hero-txt h1 {
-    font-size: 60px;
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 400;
     line-height: 1.4;
 }
 a.hero-boxed-btn {
@@ -931,7 +935,7 @@ a.hero-boxed-btn {
     letter-spacing: 1px;
 }
 a.hero-boxed-btn:hover {
-    color: #fff;
+    color: #83C536;
     background-color: #25d06f;
 }
 a.hero-boxed-btn::before {
@@ -1012,10 +1016,10 @@ a.hero-boxed-btn:hover::after {
 .intro-txt {
     padding: 77px 47px 79px 47px;
     background-color: #25d06f;
-    color: #fff;
+    color: green;
 }
 .intro-txt h2 {
-    color: #fff;
+    color: #68b33d;
 }
 .intro-txt a {
     display: inline-block;
@@ -1045,7 +1049,7 @@ a.hero-boxed-btn:hover::after {
     content: "\f101";
     position: absolute;
     font-family: "Font Awesome 5 Free";
-    font-weight: 700;
+    font-weight: 300;
     right: 50px;
     color: #fff;
     opacity: 0;
@@ -1911,7 +1915,7 @@ a.readmore-btn::after {
     position: absolute;
     content: "\f101";
     font-family: "Font Awesome 5 Free";
-    font-weight: 700;
+    font-weight: 400;
     right: 15px;
     opacity: 0;
     -webkit-transition: 0.5s;
@@ -1942,7 +1946,7 @@ a.readmore-btn:hover::after {
 }
 .footer-section {
     background-color: #0a3041;
-    color: #c5dadc;
+    color: #fff;
 }
 .footer-logo-wrapper {
     text-align: left;
@@ -1958,14 +1962,14 @@ a.readmore-btn:hover::after {
 .footer-section .footer-txt {
     font-size: 14px;
     line-height: 24px;
-    font-weight: 400;
+    font-weight: 600;
     margin-top: 22px;
 }
 .footer-section h4 {
     font-size: 18px;
     font-family: "Source Serif Pro", serif;
     font-weight: 700;
-    color: #fff;
+    color: #0A3041;
     margin-bottom: 32px;
 }
 ul.footer-links li {
@@ -1979,7 +1983,7 @@ ul.footer-links li a {
     position: relative;
     display: inline-block;
     font-size: 14px;
-    color: #c5dadc;
+    color: #fff;
     text-decoration: none;
     padding-left: 15px;
     -webkit-transition: 0.5s;
@@ -2020,7 +2024,7 @@ ul.footer-links li a:hover {
     font-size: 14px;
 }
 .footer-contact-info ul li span {
-    font-weight: 400;
+    font-weight: 600;
     font-size: 14px;
     margin-left: 15px;
     line-height: 24px;
@@ -2028,7 +2032,7 @@ ul.footer-links li a:hover {
 }
 .copyright-section {
     padding: 25px 0 27px;
-    font-size: 14px;
+    font-size: 18px;
 }
 .footer-newsletter {
     margin-top: 15px;
