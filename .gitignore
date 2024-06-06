@@ -10,5 +10,4 @@ npm-debug.log
 yarn-error.log
 .env
 .htaccess
-/public/assets
-/public/assets/*
+/public/assets/front/img/*
