@@ -679,7 +679,7 @@ public function synchroniserProducts(Request $request)
     $existingPhotoHashes = [];
     foreach ($existingPhotos as $photo) {
         $photoPath = public_path('assets/front/img/product/featured/' . $photo);
-        if (file_exists($photoPath)) {
+        if (file_exists($photoPath) && is_file($photoPath)) {
             $existingPhotoHashes[md5_file($photoPath)] = $photo;
         }
     }
@@ -693,27 +693,34 @@ public function synchroniserProducts(Request $request)
         if (!isset($existingProducts[$barcode])) {
             $newProduct = new Product();
 
-            // Check if the photo already exists
-            if (!empty($apiPhoto)) {
-                $featredImg = $apiPhoto;
-                $photoHash = md5_file($featredImg);
+            // Check if the photo URL is not empty and is a valid URL
+            if (!empty($apiPhoto) && filter_var($apiPhoto, FILTER_VALIDATE_URL)) {
+                // Download the photo content
+                $photoContent = @file_get_contents($apiPhoto);
+                if ($photoContent !== false) {
+                    // Compute the MD5 hash of the photo content
+                    $photoHash = md5($photoContent);
 
-                if (isset($existingPhotoHashes[$photoHash])) {
-                    // Use existing photo
-                    $newProduct['feature_image'] = $existingPhotoHashes[$photoHash];
-                } else {
-                    // Check if the photo already exists in the path
-                    $extFeatured = pathinfo($featredImg, PATHINFO_EXTENSION);
-                    $filename = uniqid() . '.' . $extFeatured;
-                    $filePath = 'assets/front/img/product/featured/' . $filename;
+                    if (isset($existingPhotoHashes[$photoHash])) {
+                        // Use existing photo
+                        $newProduct['feature_image'] = $existingPhotoHashes[$photoHash];
+                    } else {
+                        // Save new photo
+                        $extFeatured = pathinfo(parse_url($apiPhoto, PHP_URL_PATH), PATHINFO_EXTENSION);
+                        $filename = uniqid() . '.' . $extFeatured;
+                        $filePath = public_path('assets/front/img/product/featured/' . $filename);
 
-                    if (!file_exists(public_path($filePath))) {
-                        @copy($featredImg, public_path($filePath));
+                        // Ensure the directory exists
+                        if (!file_exists(dirname($filePath))) {
+                            mkdir(dirname($filePath), 0755, true);
+                        }
+
+                        file_put_contents($filePath, $photoContent);
+                        $newProduct['feature_image'] = $filename;
+
+                        // Store hash of the new photo
+                        $existingPhotoHashes[$photoHash] = $filename;
                     }
-
-                    $newProduct['feature_image'] = $filename;
-                    // Store hash of the new photo
-                    $existingPhotoHashes[$photoHash] = $filename;
                 }
             }
 
