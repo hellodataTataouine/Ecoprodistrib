@@ -60,7 +60,7 @@ a.hero-boxed-btn:hover {
 background-color: <?php echo $color; ?>;
 }
 .intro-txt {
-background-color: <?php echo $color; ?>;
+background-color: #3a5765c7;
 }
 a.boxed-btn {
 background-color: <?php echo $color; ?>;

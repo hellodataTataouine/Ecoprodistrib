@@ -1019,10 +1019,10 @@ a.hero-boxed-btn:hover::after {
 .intro-txt {
     padding: 77px 47px 79px 47px;
     background-color: #25d06f;
-    color: green;
+    color: #fff;
 }
 .intro-txt h2 {
-    color: #68b33d;
+    color: #fff;
 }
 .intro-txt a {
     display: inline-block;
