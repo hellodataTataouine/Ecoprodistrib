@@ -1,14 +1,14 @@
 <div class="col-lg-3">
   <div class="user-sidebar">
     <ul class="links">
-      <li>
+      {{-- <li>
         <a
           class="@if(request()->path() == 'user/dashboard') active @endif"
           href="{{route('user-dashboard')}}"
         >{{__('Dashboard')}}</a>
-      </li>
+      </li> --}}
 
-            @if ($bex->recurring_billing == 1)
+            {{-- @if ($bex->recurring_billing == 1)
             <li><a class="@if(request()->path() == 'user/packages') active @endif" href="{{route('user-packages')}}">{{__('Packages')}}</a></li>
             @endif
 
@@ -66,7 +66,7 @@
             href="{{route('user-tickets')}}"
           >{{__('Support Tickets')}}</a>
         </li>
-      @endif
+      @endif --}}
 
       <li>
         <a
@@ -75,7 +75,7 @@
         >{{__('Edit Profile')}}</a>
       </li>
 
-      @if ($bex->is_shop == 1 && $bex->catalog_mode == 0)
+      {{-- @if ($bex->is_shop == 1 && $bex->catalog_mode == 0)
         <li>
           <a
             class=" @if(request()->path() == 'user/shipping/details') active @endif"
@@ -88,7 +88,7 @@
             href="{{route('billing-details')}}"
           >{{__('Billing Details')}}</a>
         </li>
-      @endif
+      @endif --}}
         <li>
             <a
             class=" @if(request()->path() == 'user/reset') active @endif"

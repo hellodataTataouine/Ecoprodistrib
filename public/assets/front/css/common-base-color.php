@@ -247,30 +247,30 @@ li.active-search a {
     color: <?php echo $color1; ?>;
 }
 a.proceed-checkout-btn {
-    border: 1px solid <?php echo $color; ?>;
-    color: <?php echo $color; ?>;
+    border: 1px solid <?php echo $color1; ?>;
+    color: <?php echo $color1; ?>;
 }
 a.proceed-checkout-btn:hover {
-    background-color: <?php echo $color; ?>;
+    background-color: <?php echo $color1; ?>;
 }
 .cart-area .cart-table tbody tr td .remove span:hover {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .login-area .login-content .input-btn button {
     background: <?php echo $color; ?>;
     border-color: <?php echo $color; ?>;
 }
 .login-area .login-content .input-btn button:hover {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .login-area .login-content .input-btn a {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .user-sidebar .links li a.active {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .user-sidebar .links li:hover>a {
-    color: <?php echo $color; ?>;
+    color: <?php echo $color1; ?>;
 }
 .main-table .dataTables_wrapper td a.btn {
     border: 1px solid <?php echo $color; ?>;

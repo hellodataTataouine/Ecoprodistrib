@@ -2717,6 +2717,7 @@ button.filter-button:hover {
 .login-area .login-content .input-btn button:hover {
   background-color: transparent;
   color: #25d06f;
+  border: 1px solid #68b33d;
 }
 
 .login-area .login-content .input-btn a {

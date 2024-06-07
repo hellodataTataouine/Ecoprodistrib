@@ -30,7 +30,7 @@
             @include('user.inc.site_bar')
             <div class="col-lg-9">
                 <div class="row mb-5">
-                    <div class="col-lg-12">
+                    {{-- <div class="col-lg-12">
                         <div class="row">
                             @if ($bex->is_shop == 1 && $bex->catalog_mode == 0)
                             <div class="col-md-6">
@@ -76,7 +76,7 @@
                             </div>
                             @endif
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-lg-12">
                         <div class="user-profile-details">
                             <div class="account-info">

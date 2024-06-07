@@ -125,8 +125,8 @@
             <div class="container">
             <div class="row text-center">
                 <div class="col-lg-6 offset-lg-3">
-                    <span class="section-title">{{convertUtf8($bs->service_section_title)}}</span>
-                    <h2 class="section-summary">{{convertUtf8($bs->service_section_subtitle)}}</h2>
+                    <span class="section-title">{{__(convertUtf8($bs->service_section_title))}}</span>
+                    {{-- <h2 class="section-summary">{{convertUtf8($bs->service_section_subtitle)}}</h2> --}}
                 </div>
             </div>
             </div>
@@ -396,8 +396,8 @@
      <div class="container">
         <div class="row text-center">
            <div class="col-lg-6 offset-lg-3">
-              <span class="section-title">{{convertUtf8($bs->blog_section_title)}}</span>
-              <h2 class="section-summary">{{convertUtf8($bs->blog_section_subtitle)}}</h2>
+              <span class="section-title">{{__(convertUtf8($bs->blog_section_title))}}</span>
+              {{-- <h2 class="section-summary">{{convertUtf8($bs->blog_section_subtitle)}}</h2> --}}
            </div>
         </div>
         <div class="blog-carousel owl-carousel owl-theme common-carousel">

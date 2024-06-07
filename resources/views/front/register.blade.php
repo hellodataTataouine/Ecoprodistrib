@@ -59,18 +59,18 @@
                                 @endif
                             </div>
 
-                        @if ($bs->is_recaptcha == 1)
-                        <div class="d-block mb-4">
-                            {!! NoCaptcha::renderJs() !!}
-                            {!! NoCaptcha::display() !!}
-                            @if ($errors->has('g-recaptcha-response'))
-                            @php
-                                $errmsg = $errors->first('g-recaptcha-response');
-                            @endphp
-                            <p class="text-danger mb-0 mt-2">{{__("$errmsg")}}</p>
-                            @endif
-                        </div>
-                    @endif
+                        {{-- @if ($bs->is_recaptcha == 1)
+                            <div class="d-block mb-4">
+                                {!! NoCaptcha::renderJs() !!}
+                                {!! NoCaptcha::display() !!}
+                                @if ($errors->has('g-recaptcha-response'))
+                                @php
+                                    $errmsg = $errors->first('g-recaptcha-response');
+                                @endphp
+                                <p class="text-danger mb-0 mt-2">{{__("$errmsg")}}</p>
+                                @endif
+                            </div>
+                        @endif --}}
                             <div class="input-btn">
                                 <button type="submit">{{__('Register')}}</button>
                                 <p>{{__('Already have an account ?')}} <a class="mr-3" href="{{route('user.login')}}">{{__('Click Here')}}</a> {{__('to login')}}.</p>

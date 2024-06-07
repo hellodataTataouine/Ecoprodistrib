@@ -65,10 +65,10 @@ class RegisterController extends Controller
         $bs = $currentLang->basic_setting;
         $be = $currentLang->basic_extended;
 
-        $messages = [
-            'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
-            'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
-        ];
+        // $messages = [
+        //     'g-recaptcha-response.required' => 'Please verify that you are not a robot.',
+        //     'g-recaptcha-response.captcha' => 'Captcha error! try again later or contact site admin.',
+        // ];
 
         $rules = [
             'email'   => 'required|email|unique:users',
@@ -76,11 +76,11 @@ class RegisterController extends Controller
             'password' => 'required|confirmed'
         ];
 
-        if ($bs->is_recaptcha == 1) {
-            $rules['g-recaptcha-response'] = 'required|captcha';
-        }
+        // if ($bs->is_recaptcha == 1) {
+        //     $rules['g-recaptcha-response'] = 'required|captcha';
+        // }
 
-        $request->validate($rules, $messages);
+        $request->validate($rules);
 
         $user = new User;
         $input = $request->all();
@@ -103,7 +103,7 @@ class RegisterController extends Controller
         ];
         $mailer->mailFromAdmin($data);
 
-        return back()->with('sendmail','We need to verify your email address. We have sent an email to  '.$request->email. ' to verify your email address. Please click link in that email to continue.');
+        return back()->with('sendmail','Nous devons vérifier votre adresse e-mail. Nous avons envoyé un e-mail à  '.$request->email. ' pour vérifier votre adresse e-mail, veuillez cliquer sur le lien dans cet e-mail pour continuer.');
 
     }
 

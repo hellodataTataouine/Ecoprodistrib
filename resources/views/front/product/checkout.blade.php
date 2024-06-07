@@ -2,7 +2,7 @@
 
 @section('pagename')
   -
-  {{ __('Checkout') }}
+  {{ __('Quote') }}
 @endsection
 
 @section('meta-keywords', "$be->checkout_meta_keywords")
@@ -10,12 +10,12 @@
 
 @section('breadcrumb-title', convertUtf8($be->checkout_title))
 @section('breadcrumb-subtitle', convertUtf8($be->checkout_subtitle))
-@section('breadcrumb-link', __('Checkout'))
+@section('breadcrumb-link', __('Quote'))
 
 @section('content')
-
+<h6>{{ __('Your quote request has been sent successfuly') }}</h6>
   <!--====== CHECKOUT PART START ======-->
-  <section class="checkout-area">
+  {{-- <section class="checkout-area">
     <form action="{{ route('product.paypal.submit') }}" method="POST" id="payment" enctype="multipart/form-data" class="product_form">
       @csrf
       @if (Session::has('stock_error'))
@@ -383,7 +383,7 @@
                         @php
                           $total += $item['price'] * $item['qty'];
                           $product = App\Product::findOrFail($key);
-                          
+
                         @endphp
                         <tr>
                           <td colspan="2" class="product-column">
@@ -422,14 +422,14 @@
 
                 <div id="cartTotal">
                   <ul class="cart-total-table">
-                    <li class="clearfix">
+                    {{-- <li class="clearfix">
                       <span class="col col-title">{{ __('Cart Total') }}</span>
                       <span
                         class="col">{{ $bex->base_currency_symbol_position == 'left' ? $bex->base_currency_symbol : '' }}<span
                           data="{{ cartTotal() }}"
                           class="subtotal">{{ cartTotal() }}</span>{{ $bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : '' }}</span>
-                    </li>
-                    <li class="clearfix">
+                    </li> --}}
+                    {{-- <li class="clearfix">
                       <span class="col col-title">{{ __('Discount') }}
                         <span class="text-success">(<i class="fas fa-minus"></i>)</span></span>
                       <span class="col">
@@ -446,10 +446,10 @@
                           data="{{ cartSubTotal() }}" class="subtotal"
                           id="subtotal">{{ cartSubTotal() }}</span>{{ $bex->base_currency_symbol_position == 'right' ? $bex->base_currency_symbol : '' }}
                       </span>
-                    </li>
+                    </li> --}}
 
 
-                    @if (!onlyDigitalItemsInCart() && sizeof($shippings) > 0)
+                    {{-- @if (!onlyDigitalItemsInCart() && sizeof($shippings) > 0)
                       @php
                         $scharge = round($shippings[0]->charge, 2);
                       @endphp
@@ -465,9 +465,9 @@
                       @php
                         $scharge = 0;
                       @endphp
-                    @endif
+                    @endif --}}
 
-                    <li class="clearfix">
+                    {{-- <li class="clearfix">
                       <span class="col col-title">{{ __('Tax') }}
                         ({{ $bex->tax }}%)
                         <span class="text-danger">(<i class="fas fa-plus"></i>)</span>
@@ -519,16 +519,16 @@
         </div>
       </div>
     </form>
-  </section>
+  </section> --}}
 
   <!--====== CHECKOUT PART ENDS ======-->
 @endsection
 
 
 @section('scripts')
-  <script>
+  {{-- <script>
     let stripe_key = "{{ $stripe_key }}";
-  </script>
+  </script> --}}
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://js.paystack.co/v1/inline.js"></script>
   <script src="{{ asset('assets/front/js/shop-checkout-stripe.js') }}"></script>
@@ -537,136 +537,5 @@
       toastr["error"]("{{ __(session('unsuccess')) }}");
     </script>
   @endif
-  <script>
-    // apply coupon functionality starts
-    function applyCoupon() {
-      $.post(
-        "{{ route('front.coupon') }}", {
-          coupon: $("input[name='coupon']").val(),
-          _token: document.querySelector('meta[name=csrf-token]').getAttribute('content')
-        },
-        function(data) {
-          console.log(data);
-          if (data.status == 'success') {
-            toastr["success"](data.message);
-            $("input[name='coupon']").val('');
-            $("#cartTotal").load(location.href + " #cartTotal", function() {
-              let scharge = parseFloat($("input[name='shipping_charge']:checked").attr('data'));
-              let total = parseFloat($(".grandTotal").attr('data'));
 
-              $(".shipping").attr('data', scharge);
-              $(".shipping").text(scharge);
-
-              total += scharge;
-              $(".grandTotal").attr('data', total);
-              $(".grandTotal").text(total);
-            });
-          } else {
-            toastr["error"](data.message);
-          }
-        }
-      );
-    }
-    $("input[name='coupon']").on('keypress', function(e) {
-      let code = e.which;
-      if (code == 13) {
-        e.preventDefault();
-        applyCoupon();
-      }
-    });
-    // apply coupon functionality ends
-
-    $(document).on('click', '.shipping-charge', function() {
-      let total = 0;
-      let subtotal = 0;
-      let grantotal = 0;
-      let shipping = 0;
-
-      subtotal = parseFloat($('.subtotal').attr('data'));
-      grantotal = parseFloat($('.grandTotal').attr('data'));
-      shipping = parseFloat($('.shipping').attr('data'));
-
-      let shipCharge = parseFloat($(this).attr('data'));
-
-      shipping = parseFloat(shipCharge);
-      total = parseFloat(parseFloat(grantotal) + parseFloat(shipCharge));
-      $('.shipping').text(shipping);
-      $('.grandTotal').text(total);
-
-
-    })
-
-    $(document).ready(function() {
-      $(".input-check").first().attr('checked', true);
-
-      let tabid = $(".input-check:checked").data('tabid');
-
-      $('#payment').attr('action', $(".input-check:checked").data('action'));
-
-      showDetails(tabid);
-    });
-
-    // this function will decide which form to show...
-    function showDetails(tabid) {
-
-      $(".gateway-details").removeClass("d-flex");
-      $(".gateway-details").addClass("d-none");
-      $(".gateway-details input").attr('disabled', true);
-
-      if ($("#tab-" + tabid).length > 0) {
-        if (tabid == 'stripe') {
-          $("#tab-" + tabid).removeClass("d-none");
-          $("#tab-" + tabid).addClass("d-block");
-        } else {
-          $("#tab-" + tabid + " input").removeAttr('disabled');
-          $("#tab-" + tabid).removeClass("d-none");
-          $("#tab-" + tabid).addClass("d-flex");
-        }
-
-      }
-
-      if (tabid == 'paystack') {
-        $('#payment').prop('id', 'paystack');
-      }
-
-    }
-
-    // on gateway change...
-    $(document).on('click', '.input-check', function() {
-      // change form action
-      $('#payment').attr('action', $(this).data('action'));
-      // show relevant form (if any)
-      showDetails($(this).data('tabid'));
-    });
-
-    // after paystack form is submitted
-    $(document).on('submit', '#paystack', function() {
-      var val = $('#sub').val();
-      if (val == 0) {
-        var total = $(".grandTotal").text();
-        var curr = "{{ $bex->base_currency_text }}";
-        total = Math.round(total);
-        var handler = PaystackPop.setup({
-          key: "{{ $paystack['key'] }}",
-          email: "{{ $paystack['email'] }}",
-          amount: total * 100,
-          currency: curr,
-          ref: '' + Math.floor((Math.random() * 1000000000) + 1),
-          callback: function(response) {
-            $('#ref_id').val(response.reference);
-            $('#sub').val('1');
-            $('#paystack button[type="submit"]').click();
-          },
-          onClose: function() {
-            window.location.reload();
-          }
-        });
-        handler.openIframe();
-        return false;
-
-      } else {
-        return true;
-      }
-    });
-  </script>
 @endsection
