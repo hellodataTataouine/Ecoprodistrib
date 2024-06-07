@@ -9,14 +9,11 @@ use App\BasicExtended as BE;
 use App\BasicExtra;
 use App\Coupon;
 use App\Product;
-use App\ShippingCharge;
-use App\ProductReview;
 use Auth;
 use App\Pcategory;
+use Illuminate\Support\Facades\Mail;
 use Session;
 use App\Language;
-use App\OfflineGateway;
-use App\PaymentGateway;
 use Carbon\Carbon;
 
 class ProductController extends Controller
@@ -393,26 +390,40 @@ class ProductController extends Controller
         } else {
             $data['cart'] = null;
         }
-        $data['shippings'] = ShippingCharge::where('language_id', $currentLang->id)->get();
-        $data['ogateways'] = $currentLang->offline_gateways()->where('product_checkout_status', 1)->orderBy('serial_number')->get();
-        $data['stripe'] = PaymentGateway::find(14);
-        $data['paypal'] = PaymentGateway::find(15);
-        $data['paystackData'] = PaymentGateway::whereKeyword('paystack')->first();
-        $data['paystack'] = $data['paystackData']->convertAutoData();
-        $data['flutterwave'] = PaymentGateway::find(6);
-        $data['razorpay'] = PaymentGateway::find(9);
-        $data['instamojo'] = PaymentGateway::find(13);
-        $data['paytm'] = PaymentGateway::find(11);
-        $data['mollie'] = PaymentGateway::find(17);
-        $data['mercadopago'] = PaymentGateway::find(19);
-        $data['payumoney'] = PaymentGateway::find(18);
-        $data['discount'] = session()->has('coupon') && !empty(session()->get('coupon')) ? session()->get('coupon') : 0;
+        if(auth()->user()){
+            $from = auth()->user()->email;
+            $data['from'] = $from;
+            $to = env('MAIL_FROM_ADDRESS');
 
-        $stripeData = PaymentGateway::whereKeyword('stripe')->first();
-        $stripe = $stripeData->convertAutoData();
-        $data['stripe_key'] =  $stripe['key'];
+            $subject = "Demande de devis";
+            Mail::send('quote_request',$data,function($message) use ($subject,$to){
+                $message->subject($subject)
+                        ->to($to);
+            });
+        }else{
+            return redirect(route('user.login', ['redirected' => 'checkout']));
+        }
 
-        // determining the theme version selected
+        // $data['shippings'] = ShippingCharge::where('language_id', $currentLang->id)->get();
+        // $data['ogateways'] = $currentLang->offline_gateways()->where('product_checkout_status', 1)->orderBy('serial_number')->get();
+        // $data['stripe'] = PaymentGateway::find(14);
+        // $data['paypal'] = PaymentGateway::find(15);
+        // $data['paystackData'] = PaymentGateway::whereKeyword('paystack')->first();
+        // $data['paystack'] = $data['paystackData']->convertAutoData();
+        // $data['flutterwave'] = PaymentGateway::find(6);
+        // $data['razorpay'] = PaymentGateway::find(9);
+        // $data['instamojo'] = PaymentGateway::find(13);
+        // $data['paytm'] = PaymentGateway::find(11);
+        // $data['mollie'] = PaymentGateway::find(17);
+        // $data['mercadopago'] = PaymentGateway::find(19);
+        // $data['payumoney'] = PaymentGateway::find(18);
+        // $data['discount'] = session()->has('coupon') && !empty(session()->get('coupon')) ? session()->get('coupon') : 0;
+
+        // $stripeData = PaymentGateway::whereKeyword('stripe')->first();
+        // $stripe = $stripeData->convertAutoData();
+        // $data['stripe_key'] =  $stripe['key'];
+
+        // // determining the theme version selected
         $be = $currentLang->basic_extended;
         $version = $be->theme_version;
 

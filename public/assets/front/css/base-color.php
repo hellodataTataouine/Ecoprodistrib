@@ -431,7 +431,7 @@ background-color: <?php echo $color1; ?>;
 border: 1px solid <?php echo $color1; ?>;
 }
 input[type="submit"]:hover, button[type="submit"]:hover {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .subscribe-section {
 background-color: <?php echo $color1; ?>;

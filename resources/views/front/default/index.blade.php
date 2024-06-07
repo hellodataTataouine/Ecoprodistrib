@@ -80,10 +80,10 @@
                 @foreach ($features as $key => $feature)
                     <style>
                         .sf{{$feature->id}}::after {
-                            background-color: #{{$feature->color}};
+                            background-color: rgba(124, 185, 232, 0.5);
                         }
                     </style>
-                    <div class="col-md-3 col-sm-6 single-hero-feature sf{{$feature->id}}" style="background-color: #{{$feature->color}};">
+                    <div class="col-md-3 col-sm-6 single-hero-feature sf{{$feature->id}}" style="background-color: rgba(124, 185, 232, 0.5);">
                     <div class="outer-container">
                         <div class="inner-container">
                             <div class="icon-wrapper">

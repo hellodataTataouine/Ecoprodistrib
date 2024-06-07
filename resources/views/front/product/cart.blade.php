@@ -121,7 +121,7 @@
                         <a class="proceed-checkout-btn" href="{{route('front.checkout')}}" type="button"><span>{{__('Checkout')}}</span></a>
                     </div> --}}
                     <div class="update-cart float-right d-inline-block">
-                        <button class="main-btn main-btn-2" id="cartUpdate" data-href="{{route('cart.update')}}" type="button"><span>{{__('Ask for a quote')}}</span></button>
+                        <a class="proceed-checkout-btn" href="{{route('front.checkout')}}" type="button"><span>{{__('Ask for quote')}}</span></a>
                     </div>
                 </div>
             </div>

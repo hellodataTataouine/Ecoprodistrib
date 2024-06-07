@@ -1026,13 +1026,14 @@ div#map {
   -webkit-transition: background-color .5s;
   -o-transition: background-color .5s;
   transition: background-color .5s;
+  background-color: #63B32F;
 }
 
 .contact-form-section .single-info:hover .icon-wrapper {
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
-  background-color: #58bed3;
+  background-color: #63B32F;
   -webkit-transform: rotateY(360deg);
   transform: rotateY(360deg);
 }

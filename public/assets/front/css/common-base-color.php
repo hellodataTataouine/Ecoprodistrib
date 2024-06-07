@@ -1,7 +1,7 @@
 <?php
 header ("Content-Type:text/css");
 $color = $_GET['color']; // Change your Color Here
-
+$color1 = $_GET['color1'];
 
 function checkhexcolor($color) {
     return preg_match('/^#[a-f0-9]{6}$/i', $color);
@@ -15,6 +15,14 @@ if( !$color OR !checkhexcolor( $color ) ) {
     $color = "#25D06F";
 }
 
+if( isset( $_GET[ 'color1' ] ) AND $_GET[ 'color1' ] != '' ) {
+    $color = "#".$_GET[ 'color1' ];
+}
+
+if( !$color1 OR !checkhexcolor( $color1 ) ) {
+    $color1 = "#68b33d";
+}
+
 ?>
 
 
@@ -22,7 +30,7 @@ if( !$color OR !checkhexcolor( $color ) ) {
     background-color: <?php echo $color; ?> !important;
 }
 .base-color {
-    color: <?php echo $color; ?> !important;
+    color: <?php echo $color1; ?> !important;
 }
 ul.breadcumb li a:hover {
     color: <?php echo $color; ?>;
@@ -464,7 +472,7 @@ color: <?php echo $color ?>;
     color: <?php echo $color ?>;
 }
 .contact-form-section .single-info:hover .icon-wrapper {
-    background-color: <?php echo $color ?>;
+    background-color: <?php echo $color1 ?>;
 }
 .feedback-area-v1 .feedback-form .rating-box .feedback-rating:hover li i {
     color: <?php echo $color ?>;

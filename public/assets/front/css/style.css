@@ -138,7 +138,7 @@ body {
 .inner-container {
     display: table-cell;
     vertical-align: middle;
-    color: #68b33d;
+    color: #fbd579;
 }
 a.boxed-btn {
     padding: 20px;
@@ -979,14 +979,17 @@ a.hero-boxed-btn:hover::after {
     z-index: 1000;
 }
 .hero-features {
+    text-align: center;
     color: #fff;
     position: relative;
     z-index: 100;
     padding: 0 15px;
+
 }
 .single-hero-feature {
     position: relative;
     padding: 40px 60px 41px 60px;
+    border-right: 2px solid;
 }
 .single-hero-feature::after {
     position: absolute;
