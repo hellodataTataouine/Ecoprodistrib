@@ -688,6 +688,7 @@ public function synchroniserProducts(Request $request)
         $name = $produitApi['Libellé'];
         $barcode = $produitApi['Codeabarre'];
         $apiPhoto = $produitApi['MyPhoto'];
+        $apiFile = "https://emballageetcie.foodexpress.site/public/storage/" . $produitApi['MyFile'];
 
         // Check if the product already exists by slug
         if (!isset($existingProducts[$barcode])) {
@@ -724,9 +725,49 @@ public function synchroniserProducts(Request $request)
                 }
             }
 
+
+
+
+
+            if (!empty($apiFile) && filter_var($apiPhoto, FILTER_VALIDATE_URL)) {
+                // Download the photo content
+                $fileContent = @file_get_contents($apiFile);
+                if ($fileContent !== false) {
+                    // Compute the MD5 hash of the photo content
+                    $fileHash = md5($fileContent);
+
+                    if (isset($existingFileHashes[$fileContent])) {
+                        // Use existing photo
+                        $newProduct['download_file'] = $existingFileHashes[$fileHash];
+                    } else {
+                        // Save new photo
+                        $extFeatured = pathinfo(parse_url($apiFile, PHP_URL_PATH), PATHINFO_EXTENSION);
+                        $filename = uniqid() . '.' . $extFeatured;
+                        $filePath = public_path('assets/front/files/products/' . $filename);
+
+                        // Ensure the directory exists
+                        if (!file_exists(dirname($filePath))) {
+                            mkdir(dirname($filePath), 0755, true);
+                        }
+
+                        file_put_contents($filePath, $photoContent);
+                        $newProduct['download_file'] = $filename;
+
+                        // Store hash of the new photo
+                        $existingPhotoHashes[$photoHash] = $filename;
+                    }
+                }
+            }
+
+
+
+
+
+
             $newProduct->title = $name;
             $newProduct->slug = $barcode;
             $newProduct->language_id = $lang->id;
+            $newProduct->stock = 10000;
             $newProduct->is_publish = 1;
             // Set other properties accordingly based on your product model
             $newProduct->save();
@@ -734,8 +775,57 @@ public function synchroniserProducts(Request $request)
             $matchingProduct = $existingProducts[$barcode];
             if ($matchingProduct->title != $name) {
                 $matchingProduct->title = $name;
-                $matchingProduct->save();
             }
+
+            // Handle missing photo for existing product
+            if (empty($matchingProduct['feature_image']) && !empty($apiPhoto) && filter_var($apiPhoto, FILTER_VALIDATE_URL)) {
+                $photoContent = @file_get_contents($apiPhoto);
+                if ($photoContent !== false) {
+                    $photoHash = md5($photoContent);
+
+                    if (!isset($existingPhotoHashes[$photoHash])) {
+                        $extFeatured = pathinfo(parse_url($apiPhoto, PHP_URL_PATH), PATHINFO_EXTENSION);
+                        $filename = uniqid() . '.' . $extFeatured;
+                        $filePath = public_path('assets/front/img/product/featured/' . $filename);
+
+                        if (!file_exists(dirname($filePath))) {
+                            mkdir(dirname($filePath), 0755, true);
+                        }
+
+                        file_put_contents($filePath, $photoContent);
+                        $matchingProduct['feature_image'] = $filename;
+                        $existingPhotoHashes[$photoHash] = $filename;
+                    } else {
+                        $matchingProduct['feature_image'] = $existingPhotoHashes[$photoHash];
+                    }
+                }
+            }
+
+            // Handle missing PDF file for existing product
+            if (empty($matchingProduct['download_file']) && !empty($apiFile) && filter_var($apiFile, FILTER_VALIDATE_URL)) {
+                $fileContent = @file_get_contents($apiFile);
+                if ($fileContent !== false) {
+                    $fileHash = md5($fileContent);
+
+                    if (!isset($existingFileHashes[$fileHash])) {
+                        $extFile = pathinfo(parse_url($apiFile, PHP_URL_PATH), PATHINFO_EXTENSION);
+                        $filename = uniqid() . '.' . $extFile;
+                        $filePath = public_path('assets/front/files/products/' . $filename);
+
+                        if (!file_exists(dirname($filePath))) {
+                            mkdir(dirname($filePath), 0755, true);
+                        }
+
+                        file_put_contents($filePath, $fileContent);
+                        $matchingProduct['download_file'] = $filename;
+                        $existingFileHashes[$fileHash] = $filename;
+                    } else {
+                        $matchingProduct['download_file'] = $existingFileHashes[$fileHash];
+                    }
+                }
+            }
+
+            $matchingProduct->save();
         }
     }
 
