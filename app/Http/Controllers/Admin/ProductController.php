@@ -738,7 +738,7 @@ public function synchroniserProducts(Request $request)
 
                     if (isset($existingFileHashes[$fileContent])) {
                         // Use existing photo
-                        $newProduct['pdf_file'] = $existingFileHashes[$fileHash];
+                        $newProduct['download_file'] = $existingFileHashes[$fileHash];
                     } else {
                         // Save new photo
                         $extFeatured = pathinfo(parse_url($apiFile, PHP_URL_PATH), PATHINFO_EXTENSION);
@@ -751,7 +751,7 @@ public function synchroniserProducts(Request $request)
                         }
 
                         file_put_contents($filePath, $photoContent);
-                        $newProduct['pdf_file'] = $filename;
+                        $newProduct['download_file'] = $filename;
 
                         // Store hash of the new photo
                         $existingPhotoHashes[$photoHash] = $filename;
@@ -802,7 +802,7 @@ public function synchroniserProducts(Request $request)
             }
 
             // Handle missing PDF file for existing product
-            if (empty($matchingProduct['pdf_file']) && !empty($apiFile) && filter_var($apiFile, FILTER_VALIDATE_URL)) {
+            if (empty($matchingProduct['download_file']) && !empty($apiFile) && filter_var($apiFile, FILTER_VALIDATE_URL)) {
                 $fileContent = @file_get_contents($apiFile);
                 if ($fileContent !== false) {
                     $fileHash = md5($fileContent);
@@ -817,10 +817,10 @@ public function synchroniserProducts(Request $request)
                         }
 
                         file_put_contents($filePath, $fileContent);
-                        $matchingProduct['pdf_file'] = $filename;
+                        $matchingProduct['download_file'] = $filename;
                         $existingFileHashes[$fileHash] = $filename;
                     } else {
-                        $matchingProduct['pdf_file'] = $existingFileHashes[$fileHash];
+                        $matchingProduct['download_file'] = $existingFileHashes[$fileHash];
                     }
                 }
             }
