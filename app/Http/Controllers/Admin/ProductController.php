@@ -688,7 +688,7 @@ public function synchroniserProducts(Request $request)
         $name = $produitApi['Libellé'];
         $barcode = $produitApi['Codeabarre'];
         $apiPhoto = $produitApi['MyPhoto'];
-        $apiFile = "https://emballageetcie.foodexpress.site/public/storage/" . $produitApi['MyFile'];
+        $apiFile = "https://emballage-et-cie.fr/public/storage/" . $produitApi['MyFile'];
 
         // Check if the product already exists by slug
         if (!isset($existingProducts[$barcode])) {

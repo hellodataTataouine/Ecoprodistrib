@@ -24,7 +24,7 @@
 
   <!--    introduction area start   -->
   <div class="intro-section" @if($bs->feature_section == 0) style="margin-top: 0px;" @endif>
-     <div class="container">
+     <div class="container col-md-8">
        @if ($bs->feature_section == 1)
        <div class="hero-features">
           <div class="row">
@@ -34,7 +34,7 @@
                         background-color: rgb(49 46 46 / 50%);
                     }
                 </style>
-                <div class="col-md-3 col-sm-6 single-hero-feature sf{{$feature->id}}" style="background-color: rgb(49 46 46 / 50%);">
+                <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(49 46 46 / 50%);">
                 <div class="outer-container">
                     <div class="inner-container">
                         <div class="icon-wrapper">

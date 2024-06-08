@@ -162,24 +162,26 @@
                         <li class="nav-item">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Description')}}</a>
                         </li>
-                        {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                         <li class="nav-item">
-                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('Reviews')}} ({{count($reviews)}})</a>
+                            <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('Technical sheet')}}</a>
                         </li>
-                        @endif --}}
+                        @endif
                     </ul>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                                 {!! replaceBaseUrl(convertUtf8($product->description)) !!}
 
                         </div>
-                        {{-- @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="shop-review-area">
                                 <div class="shop-review-title">
-                                    <h3 class="title">{{convertUtf8($product->title)}}</h3>
+                                    {{-- <h3 class="title">{{convertUtf8($product->title)}}</h3> --}}
+                                    <a href="localhost:8000/assets/front/files/products/{{ $product->download_file }}" target="_blank" title="{{__('View technical sheet')}}"><img src="{{asset('assets/front/img/pdf-svgrepo-com.svg')}}" alt="{{__('View technical sheet')}}"></a>
                                 </div>
-                                @if (count($reviews) > 0)
+                                <br>
+                                {{-- @if (count($reviews) > 0)
                                     @foreach ($reviews as $review)
                                     <div class="shop-review-user">
                                         @if (strpos($review->user->photo, 'facebook') !== false || strpos($review->user->photo, 'google'))
@@ -200,8 +202,8 @@
                                     <div class="bg-light mt-4 text-center py-5">
                                         {{__('NOT RATED YET')}}
                                     </div>
-                                @endif
-                                    @if(Auth::user())
+                                @endif --}}
+                                    {{-- @if(Auth::user())
                                         @if(App\OrderItem::where('user_id',Auth::user()->id)->where('product_id',$product->id)->exists())
                                     <div class="shop-review-form">
                                         @error('error')
@@ -254,10 +256,10 @@
                                     <div class="review-login mt-5">
                                         <a class="boxed-btn d-inline-block mr-2" href="{{route('user.login')}}">{{__('Login')}}</a> {{__('to leave a rating')}}
                                     </div>
-                                    @endif
+                                    @endif --}}
                             </div>
                         </div>
-                        @endif --}}
+                        @endif
                     </div>
                 </div>
             </div>

@@ -31,8 +31,8 @@ class FeatureController extends Controller
     public function store(Request $request)
     {
         $count = Feature::where('language_id', $request->language_id)->count();
-        if ($count == 4) {
-            Session::flash('warning', 'You cannot add more than 4 features!');
+        if ($count == 5) {
+            Session::flash('warning', 'You cannot add more than 5 features!');
             return "success";
         }
 
