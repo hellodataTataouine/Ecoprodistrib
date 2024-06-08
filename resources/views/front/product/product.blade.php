@@ -186,7 +186,7 @@
                         @method('POST')
                         <button class="cart-add-link mt-3" type="submit">{{ __('Add') }}</button>
                     </form> --}}
-                    <a class="cart-add-link mt-3" href="{{route('add.cart',$product->id)}}">{{ __('Add') }}</a>
+                    <a class="cart-link cart-add-link mt-3" data-href="{{route('add.cart',$product->id)}}">{{ __('Add') }}</a>
 
                 </div>
                   @endforeach
