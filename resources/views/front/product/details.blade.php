@@ -94,15 +94,15 @@
 
                     @if ($bex->catalog_mode == 0)
                         <div class="actions">
-                            <a class="main-btn cart-btn cart-link d-inline-block" data-href="{{route('add.cart',$product->id)}}">{{__('Add for a quote')}}</a>
-                            <form class="d-inline-block ml-2" method="GET" action="{{route('front.product.checkout',$product->slug)}}">
-                                {{-- <input type="hidden" value="" name="qty" id="order_click_with_qty"> --}}
+                            <a class="main-btn cart-btn cart-link d-inline-block" data-href="{{route('add.cart',$product->id)}}">{{__('Add')}}</a>
+                            {{-- <form class="d-inline-block ml-2" method="GET" action="{{route('front.product.checkout',$product->slug)}}">
+                                <input type="hidden" value="" name="qty" id="order_click_with_qty">
                                 <button type="submit" class="main-btn checkout-btn" >{{__('Ask for a quote')}}</button>
-                            </form>
+                            </form> --}}
                         </div>
                     @endif
 
-                    <div class="product-social-icon social-link a2a_kit a2a_kit_size_32">
+                    {{-- <div class="product-social-icon social-link a2a_kit a2a_kit_size_32">
                         <ul class="social-share">
                             <li>
                                 <a class="facebook a2a_button_facebook" href="">
@@ -131,7 +131,7 @@
                                   </a>
                                 </li>
                         </ul>
-                    </div>
+                    </div> --}}
                     <script async src="https://static.addtoany.com/menu/page.js"></script>
                     <div class="product-details-tags">
                         <ul>
@@ -162,7 +162,7 @@
                         <li class="nav-item">
                         <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">{{__('Description')}}</a>
                         </li>
-                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        @if ($product->download_file !== null)
                         <li class="nav-item">
                             <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">{{__('Technical sheet')}}</a>
                         </li>
@@ -173,12 +173,12 @@
                                 {!! replaceBaseUrl(convertUtf8($product->description)) !!}
 
                         </div>
-                        @if ($bex->product_rating_system == 1 && $bex->catalog_mode == 0)
+                        @if ($product->download_file !== null )
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                             <div class="shop-review-area">
                                 <div class="shop-review-title">
                                     {{-- <h3 class="title">{{convertUtf8($product->title)}}</h3> --}}
-                                    <a href="localhost:8000/assets/front/files/products/{{ $product->download_file }}" target="_blank" title="{{__('View technical sheet')}}"><img src="{{asset('assets/front/img/pdf-svgrepo-com.svg')}}" alt="{{__('View technical sheet')}}"></a>
+                                    <a href="/assets/front/files/products/{{ $product->download_file }}" target="_blank" title="{{__('View technical sheet')}}"><img src="{{asset('assets/front/img/pdf-svgrepo-com.svg')}}" alt="{{__('View technical sheet')}}"></a>
                                 </div>
                                 <br>
                                 {{-- @if (count($reviews) > 0)
