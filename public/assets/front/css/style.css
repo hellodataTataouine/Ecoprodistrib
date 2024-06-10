@@ -515,7 +515,6 @@ ul.language-dropdown li:last-child a {
     padding: 20px 5px 20px 5px;
     border-bottom: 1px solid #94a7b2;
     position: relative;
-    background-color: #6eb356;
 }
 .sticky-navbar {
     position: fixed;
@@ -1047,7 +1046,7 @@ a.hero-boxed-btn:hover::after {
     content: "\f101";
     position: absolute;
     font-family: "Font Awesome 5 Free";
-    font-weight: 700;
+    font-weight: 400;
     right: 50px;
     color: #fff;
     opacity: 0;

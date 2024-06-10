@@ -54,7 +54,7 @@ a.boxed-btn {
 background-color: <?php echo $color; ?>;
 }
 .main-menu li a.boxed-btn {
-border: 1px solid <?php echo $color; ?>;
+border: 1px solid #fff;
 }
 a.hero-boxed-btn:hover {
 background-color: <?php echo $color; ?>;
@@ -334,7 +334,7 @@ border: 2px solid <?php echo $color; ?>;
 }
 
 .statistics-section h5 i {
-color: <?php echo $color; ?>;
+color: #fff;
 }
 
 .hero2-carousel.owl-theme .owl-dots .owl-dot.active span {
@@ -396,6 +396,7 @@ color: <?php echo $color; ?>;
 
 .intro-txt a {
 background-color: <?php echo $color1; ?>;
+border: 1px solid ;
 }
 .sticky-navbar {
 background-color: <?php echo $color1; ?>;

@@ -31,10 +31,10 @@
             @foreach ($features as $key => $feature)
                 <style>
                     .sf{{$feature->id}}::after {
-                        background-color: rgb(205 161 68 / 50%);
+                        background-color: rgb(0 0 0 / 50%);
                     }
                 </style>
-                <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(205 161 68 / 50%);">
+                <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
                 <div class="outer-container">
                     <div class="inner-container">
                         <div class="icon-wrapper">
