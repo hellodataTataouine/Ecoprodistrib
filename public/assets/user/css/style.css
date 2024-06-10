@@ -999,11 +999,9 @@ ul.language-dropdown li:last-child a {
 
 .main-menu li.dropdown ul.dropdown-lists li a {
     position: relative;
-    color: #0A3041;
+    color: #fff;
     border-top: none;
 }
-
-
 
 .main-menu li.dropdown ul.dropdown-lists li a::after {
     background-color: transparent;

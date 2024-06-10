@@ -138,7 +138,6 @@ body {
 .inner-container {
     display: table-cell;
     vertical-align: middle;
-    color: #fbd579;
 }
 a.boxed-btn {
     padding: 20px;
@@ -152,7 +151,7 @@ a.boxed-btn {
     text-decoration: none;
 }
 .section-summary {
-    font-size: 23.8px;
+    font-size: 36px;
     font-weight: 400;
     margin: 16px 0 47px 0;
     font-weight: 400;
@@ -266,7 +265,7 @@ textarea {
 button[type="submit"],
 input[type="submit"] {
     border: none;
-    color: #0a3041;
+    color: #fff;
     padding: 18px 45px;
     display: inline-block;
     outline: 0;
@@ -281,7 +280,7 @@ input[type="submit"] {
 }
 button[type="submit"]:hover,
 input[type="submit"]:hover {
-    background-color: #83C536;
+    background-color: #fff;
     color: #0a3041;
 }
 ::-webkit-input-placeholder {
@@ -506,16 +505,17 @@ ul.language-dropdown li:last-child a {
     vertical-align: middle;
 }
 .logo-wrapper img {
-    max-width: 245px;
+    max-width: 233px;
     max-height: 60px;
 }
 #mobileMenu {
     display: none;
 }
 .header-navbar {
-    padding: 29px 0 28px 0;
+    padding: 20px 5px 20px 5px;
     border-bottom: 1px solid #94a7b2;
     position: relative;
+    background-color: #6eb356;
 }
 .sticky-navbar {
     position: fixed;
@@ -556,6 +556,7 @@ ul.language-dropdown li:last-child a {
 .sticky-navbar .header-navbar {
     border: none;
     padding: 15px 0;
+    background-color: transparent;
 }
 .sticky-navbar .main-menu {
     padding: 6px 0;
@@ -617,8 +618,6 @@ ul.language-dropdown li:last-child a {
     color: #25d06f;
 }
 .main-menu li a.boxed-btn {
-    background-color: #fff;
-    color: #68b33d;
     font-weight: 600;
     padding: 20px;
     margin-left: 20px;
@@ -627,9 +626,9 @@ ul.language-dropdown li:last-child a {
     border: 1px solid #25d06f;
 }
 .main-menu li a.boxed-btn:hover {
-    background-color: #68b33d;
+    background-color: #fff;
     border: 1px solid #25d06f;
-    color: #68b33d;
+    color: #25d06f;
 }
 .main-menu li.dropdown {
     position: relative;
@@ -666,7 +665,6 @@ ul.language-dropdown li:last-child a {
     transition: 0.1s;
     -webkit-transform: translateY(20px);
     transform: translateY(20px);
-    color: #fff;
 }
 .main-menu li.dropdown:hover ul.dropdown-lists {
     visibility: visible;
@@ -905,19 +903,19 @@ li.submenus::after {
 .hero-txt span {
     font-family: "Source Serif Pro", serif;
     display: inline-block;
-    font-size: 24px;
+    font-size: 27px;
     font-weight: 700;
     margin-bottom: 16px;
     text-transform: capitalize;
 }
 .hero-txt h1 {
-    font-size: 20px;
-    font-weight: 400;
+    font-size: 25px;
+    font-weight: 600;
     line-height: 1.4;
 }
 a.hero-boxed-btn {
     display: inline-block;
-    width: 200px;
+    width: 295px;
     height: 60px;
     line-height: 60px;
     color: #fff;
@@ -935,7 +933,7 @@ a.hero-boxed-btn {
     letter-spacing: 1px;
 }
 a.hero-boxed-btn:hover {
-    color: #83C536;
+    color: #fff;
     background-color: #25d06f;
 }
 a.hero-boxed-btn::before {
@@ -979,17 +977,14 @@ a.hero-boxed-btn:hover::after {
     z-index: 1000;
 }
 .hero-features {
-    text-align: center;
     color: #fff;
     position: relative;
     z-index: 100;
     padding: 0 15px;
-
 }
 .single-hero-feature {
     position: relative;
     padding: 40px 60px 41px 60px;
-    border-right: 2px solid;
 }
 .single-hero-feature::after {
     position: absolute;
@@ -1052,7 +1047,7 @@ a.hero-boxed-btn:hover::after {
     content: "\f101";
     position: absolute;
     font-family: "Font Awesome 5 Free";
-    font-weight: 300;
+    font-weight: 700;
     right: 50px;
     color: #fff;
     opacity: 0;
@@ -1918,32 +1913,12 @@ a.readmore-btn::after {
     position: absolute;
     content: "\f101";
     font-family: "Font Awesome 5 Free";
-    font-weight: 400;
+    font-weight: 700;
     right: 15px;
     opacity: 0;
     -webkit-transition: 0.5s;
     transition: 0.5s;
     margin-top: 1px;
-}
-a.cart-add-link {
-    display: block;
-    position: relative;
-    margin-top: 18px;
-    font-size: 14px;
-    background-color: #fff;
-    color: #ff7c08;
-    padding: 15px;
-    text-align: center;
-    width: 100%;
-    font-weight: 600;
-    border: 2px solid;
-    border-radius: 2px;
-    cursor: pointer;
-    text-decoration: none;
-}
-a.cart-add-link:hover{
-    color: #68b33d;
-    border: 2px solid #68b33d;
 }
 a.readmore-btn:hover::after {
     opacity: 1;
@@ -1969,7 +1944,7 @@ a.readmore-btn:hover::after {
 }
 .footer-section {
     background-color: #0a3041;
-    color: #fff;
+    color: #c5dadc;
 }
 .footer-logo-wrapper {
     text-align: left;
@@ -1980,19 +1955,19 @@ a.readmore-btn:hover::after {
     display: inline-block;
 }
 .footer-logo-wrapper img {
-    width: 100%;
+    width: 265px;
 }
 .footer-section .footer-txt {
-    font-size: 14px;
+    font-size: 20px;
     line-height: 24px;
-    font-weight: 600;
+    font-weight: 400;
     margin-top: 22px;
 }
 .footer-section h4 {
-    font-size: 18px;
+    font-size: 20px;
     font-family: "Source Serif Pro", serif;
     font-weight: 700;
-    color: #0A3041;
+    color: #fff;
     margin-bottom: 32px;
 }
 ul.footer-links li {
@@ -2005,8 +1980,8 @@ ul.footer-links li:last-child {
 ul.footer-links li a {
     position: relative;
     display: inline-block;
-    font-size: 14px;
-    color: #fff;
+    font-size: 16px;
+    color: #c5dadc;
     text-decoration: none;
     padding-left: 15px;
     -webkit-transition: 0.5s;
@@ -2047,15 +2022,15 @@ ul.footer-links li a:hover {
     font-size: 14px;
 }
 .footer-contact-info ul li span {
-    font-weight: 600;
-    font-size: 14px;
+    font-weight: 400;
+    font-size: 16px;
     margin-left: 15px;
     line-height: 24px;
     margin-top: -6px;
 }
 .copyright-section {
     padding: 25px 0 27px;
-    font-size: 18px;
+    font-size: 14px;
 }
 .footer-newsletter {
     margin-top: 15px;

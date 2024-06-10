@@ -1,7 +1,7 @@
 <?php
 header ("Content-Type:text/css");
 $color = $_GET['color']; // Change your Color Here
-$color1 = $_GET['color1'];
+
 
 function checkhexcolor($color) {
     return preg_match('/^#[a-f0-9]{6}$/i', $color);
@@ -15,14 +15,6 @@ if( !$color OR !checkhexcolor( $color ) ) {
     $color = "#25D06F";
 }
 
-if( isset( $_GET[ 'color1' ] ) AND $_GET[ 'color1' ] != '' ) {
-    $color = "#".$_GET[ 'color1' ];
-}
-
-if( !$color1 OR !checkhexcolor( $color1 ) ) {
-    $color1 = "#68b33d";
-}
-
 ?>
 
 
@@ -30,7 +22,7 @@ if( !$color1 OR !checkhexcolor( $color1 ) ) {
     background-color: <?php echo $color; ?> !important;
 }
 .base-color {
-    color: <?php echo $color1; ?> !important;
+    color: <?php echo $color; ?> !important;
 }
 ul.breadcumb li a:hover {
     color: <?php echo $color; ?>;
@@ -155,7 +147,7 @@ ul.breadcumb li a:hover {
     border-color: <?php echo $color; ?> !important;
 }
 .product-area .shop-search i {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .product-area .shop-sidebar .shop-box .sidebar-title .title::before {
     background: <?php echo $color; ?>;
@@ -183,32 +175,28 @@ button.filter-button {
     background-color: <?php echo $color; ?>8a;
 }
 li.active-search a {
-    color: <?php echo $color1; ?> !important;
+    color: <?php echo $color; ?> !important;
 }
 .product-area .shop-item .shop-thumb ul li a {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .product-area .shop-item .shop-content span {
     color: <?php echo $color; ?>;
 }
 .product-area .shop-item .shop-content a:hover {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .product-details-area .product-item-slide .slick-arrow {
-    background: <?php echo $color1; ?>;
+    background: <?php echo $color; ?>;
 }
 .actions .main-btn {
-    background: <?php echo $color1; ?>;
-}
-.actions .main-btn.checkout-btn:hover {
-    background: #f3df6f;
-    color: #000;
+    background: <?php echo $color; ?>;
 }
 .product-details-area .product-details-content .product-details-tags ul li {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .shop-tab-area .nav .nav-item .nav-link.active {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .shop-review-area .shop-review-form .input-box ul li a {
     color: <?php echo $color; ?>;
@@ -227,50 +215,49 @@ li.active-search a {
     color: <?php echo $color; ?>;
 }
 .product-items .shop-item .shop-content span {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .shop-tab-area .nav .nav-item .nav-link::before {
-    background: <?php echo $color1; ?>;
+    background: <?php echo $color; ?>;
 }
 .product-details-area .product-details-slide-item .slick-arrow {
-    background: <?php echo $color1; ?>;
+    background: <?php echo $color; ?>;
 }
 .cart-area .cart-table tbody .available-info .icon {
-    background: <?php echo $color1; ?>;
+    background: <?php echo $color; ?>;
 }
 .cart-middle .update-cart button {
-    border: 1px solid <?php echo $color1; ?>;
-    background: <?php echo $color1; ?>;
+    border: 1px solid <?php echo $color; ?>;
+    background: <?php echo $color; ?>;
 }
-
 .cart-middle .update-cart button:hover {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 a.proceed-checkout-btn {
-    border: 1px solid <?php echo $color1; ?>;
-    color: <?php echo $color1; ?>;
+    border: 1px solid <?php echo $color; ?>;
+    color: <?php echo $color; ?>;
 }
 a.proceed-checkout-btn:hover {
-    background-color: <?php echo $color1; ?>;
+    background-color: <?php echo $color; ?>;
 }
 .cart-area .cart-table tbody tr td .remove span:hover {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .login-area .login-content .input-btn button {
     background: <?php echo $color; ?>;
     border-color: <?php echo $color; ?>;
 }
 .login-area .login-content .input-btn button:hover {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .login-area .login-content .input-btn a {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .user-sidebar .links li a.active {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .user-sidebar .links li:hover>a {
-    color: <?php echo $color1; ?>;
+    color: <?php echo $color; ?>;
 }
 .main-table .dataTables_wrapper td a.btn {
     border: 1px solid <?php echo $color; ?>;
@@ -472,7 +459,7 @@ color: <?php echo $color ?>;
     color: <?php echo $color ?>;
 }
 .contact-form-section .single-info:hover .icon-wrapper {
-    background-color: <?php echo $color1 ?>;
+    background-color: <?php echo $color ?>;
 }
 .feedback-area-v1 .feedback-form .rating-box .feedback-rating:hover li i {
     color: <?php echo $color ?>;

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Helpers\KreativMailer;
 use App\User;
 use Auth;
+use Illuminate\Support\Facades\Mail;
 use Session;
 use App\Language;
 use Config;
@@ -91,22 +92,35 @@ class RegisterController extends Controller
         $user->fill($input)->save();
 
 
-        $mailer = new KreativMailer();
-        $data = [
-            'toMail' => $user->email,
-            'toName' => $user->username,
-            'customer_username' => $user->username,
-            'verification_link' => "<a href='" . url('register/verify/' . $token) . "'>" . url('register/verify/' . $token) . "</a>",
-            'website_title' => $bs->website_title,
-            'templateType' => 'email_verification',
-            'type' => 'emailVerification'
-        ];
-        $mailer->mailFromAdmin($data);
+        // $mailer = new KreativMailer();
+        // $data = [
+        //     'toMail' => $user->email,
+        //     'toName' => $user->username,
+        //     'customer_username' => $user->username,
+        //     'verification_link' => "<a href='" . url('register/verify/' . $token) . "'>" . url('register/verify/' . $token) . "</a>",
+        //     'website_title' => $bs->website_title,
+        //     'templateType' => 'email_verification',
+        //     'type' => 'emailVerification'
+        // ];
+        // $mailer->mailFromAdmin($data);
+        $to = $user->email;
+        $verification_link = url('register/verify/' . $token);
+        $subject = "Vérification de l'E-mail";
+        $data['toname']=$user->username;
+        $data['verification_link']=$verification_link;
+
+        $this->sendEmail($to,$subject,$data);
 
         return back()->with('sendmail','Nous devons vérifier votre adresse e-mail. Nous avons envoyé un e-mail à  '.$request->email. ' pour vérifier votre adresse e-mail, veuillez cliquer sur le lien dans cet e-mail pour continuer.');
 
     }
-
+    public function sendEmail($to, $subject, $data)
+    {
+        Mail::send("email_verification",$data, function ($message) use ($to, $subject) {
+            $message->to($to)
+                    ->subject($subject);
+        });
+    }
 
     public function token($token)
     {

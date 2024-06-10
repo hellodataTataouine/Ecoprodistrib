@@ -1026,14 +1026,13 @@ div#map {
   -webkit-transition: background-color .5s;
   -o-transition: background-color .5s;
   transition: background-color .5s;
-  background-color: #63B32F;
 }
 
 .contact-form-section .single-info:hover .icon-wrapper {
   -webkit-transition: .5s;
   -o-transition: .5s;
   transition: .5s;
-  background-color: #63B32F;
+  background-color: #58bed3;
   -webkit-transform: rotateY(360deg);
   transform: rotateY(360deg);
 }
@@ -1958,8 +1957,7 @@ li.active-search a {
 }
 
 .actions .main-btn.cart-btn:hover {
-  color: #000;
-  background: #f3df6f;
+  color: #fff;
 }
 
 .actions .checkout-btn {
@@ -2717,7 +2715,6 @@ button.filter-button:hover {
 .login-area .login-content .input-btn button:hover {
   background-color: transparent;
   color: #25d06f;
-  border: 1px solid #68b33d;
 }
 
 .login-area .login-content .input-btn a {

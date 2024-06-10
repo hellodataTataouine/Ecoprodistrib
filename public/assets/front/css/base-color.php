@@ -60,33 +60,33 @@ a.hero-boxed-btn:hover {
 background-color: <?php echo $color; ?>;
 }
 .intro-txt {
-background-color: #3a5765c7;
+background-color: <?php echo $color; ?>;
 }
 a.boxed-btn {
 background-color: <?php echo $color; ?>;
 }
 .approach-summary a.boxed-btn:hover {
-border: 1px solid <?php echo $color1; ?>;
-color: <?php echo $color1; ?>;
+border: 1px solid <?php echo $color; ?>;
+color: <?php echo $color; ?>;
 }
 .single-approach:hover .approach-icon-wrapper {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 border: 1px solid <?php echo $color; ?>;
 }
 .approach-icon-wrapper i {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 a.boxed-btn {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 }
 a.readmore-btn {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 }
 .single-case p {
 color: <?php echo $color; ?>;
 }
 .single-testimonial h6 {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .single-testimonial::before {
 border-top: 2px solid <?php echo $color; ?>;
@@ -114,24 +114,13 @@ border-top: 2px solid <?php echo $color; ?>;
 border-left: 2px solid <?php echo $color; ?>;
 }
 .blog-txt .date span {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .blog-txt .blog-title a:hover {
 color: <?php echo $color; ?>;
 }
 a.readmore-btn {
-background-color: <?php echo $color1; ?>;
-}
-a.readmore-btn::after {
-    position: absolute;
-    content: "\f101";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 400;
-    right: 15px;
-    opacity: 0;
-    -webkit-transition: 0.5s;
-    transition: 0.5s;
-    margin-top: 1px;
+background-color: <?php echo $color; ?>;
 }
 ul.footer-links li a::after {
 color: <?php echo $color; ?>;
@@ -140,7 +129,7 @@ ul.footer-links li a:hover {
 color: <?php echo $color; ?>;
 }
 .footer-newsletter button[type="submit"]:hover, .footer-newsletter input[type="submit"]:hover {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .footer-newsletter button[type="submit"], .footer-newsletter input[type="submit"] {
 background-color: <?php echo $color; ?>;
@@ -150,11 +139,11 @@ border: 1px solid <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 .back-to-top {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 border: 1px solid <?php echo $color; ?>;
 }
 .back-to-top:hover {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 ul.breadcumb li a:hover {
 color: <?php echo $color; ?>;
@@ -163,7 +152,7 @@ color: <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 .approach-icon-wrapper {
-border: 1px solid <?php echo $color1; ?>;
+border: 1px solid <?php echo $color; ?>;
 }
 .case-carousel button.owl-next:hover {
 border: 2px solid <?php echo $color; ?> !important;
@@ -172,7 +161,7 @@ border: 2px solid <?php echo $color; ?> !important;
 color: <?php echo $color; ?>;
 }
 .member-info small {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .single-team-member::before {
 border-top: 2px solid <?php echo $color; ?>;
@@ -246,9 +235,6 @@ color: <?php echo $color; ?>;
 .main-menu li.dropdown ul.dropdown-lists li a::before {
 background-color: <?php echo $color; ?>;
 }
-.main-menu li.dropdown ul.dropdown-lists li a:hover {
-color: <?php echo $color1; ?>;
-}
 .main-menu li.dropdown ul.dropdown-lists li.active a {
 background-color: <?php echo $color; ?>;
 }
@@ -256,7 +242,7 @@ background-color: <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 .single-category .text a.readmore {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 .category-lists ul li.active a {
 color: <?php echo $color; ?>;
@@ -294,12 +280,12 @@ color: <?php echo $color; ?>;
 background: <?php echo $color; ?>;
 }
 .owl-carousel.common-carousel .owl-nav button.owl-next, .owl-carousel.common-carousel .owl-nav button.owl-prev {
-background: <?php echo $color1; ?>;
+background: <?php echo $color; ?>;
 border: 1px solid <?php echo $color; ?>;
 }
 
 .owl-carousel.common-carousel .owl-nav button.owl-next:hover, .owl-carousel.common-carousel .owl-nav button.owl-prev:hover {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 
 .mega-dropdown .service-category a.active {
@@ -343,7 +329,7 @@ background: <?php echo $color; ?>;
 }
 
 .pagination-nav li.page-item.active a, .pagination-nav li.page-item.active span {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 border: 2px solid <?php echo $color; ?>;
 }
 
@@ -356,7 +342,7 @@ background-color: <?php echo $color; ?>;
 }
 
 button.cookie-consent__agree {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 }
 
 button.mfp-close:hover {
@@ -364,21 +350,21 @@ background-color: <?php echo $color; ?>;
 }
 
 .single-pricing-table:hover a.pricing-btn {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 }
 
 .single-pricing-table a.pricing-btn:hover {
 background-color: #fff;
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 
 .single-pricing-table:hover {
-background-color: <?php echo $color1; ?>;
+background-color: <?php echo $color; ?>;
 border: 2px solid <?php echo $color; ?>;
 }
 
 .single-pricing-table .price {
-color: <?php echo $color1; ?>;
+color: <?php echo $color; ?>;
 }
 
 .package-order {
@@ -431,7 +417,7 @@ background-color: <?php echo $color1; ?>;
 border: 1px solid <?php echo $color1; ?>;
 }
 input[type="submit"]:hover, button[type="submit"]:hover {
-color: <?php echo $color; ?>;
+color: <?php echo $color1; ?>;
 }
 .subscribe-section {
 background-color: <?php echo $color1; ?>;
@@ -524,11 +510,9 @@ color: <?php echo $color; ?>;
 }
 .slicknav_nav .slicknav_row:hover {
 background: <?php echo $color; ?>;
-color: <?php echo $color1; ?>;
 }
 .slicknav_nav a:hover {
 background: <?php echo $color; ?>;
-color: <?php echo $color1; ?>;
 }
 h5.service-title {
 color: <?php echo $color; ?>;
