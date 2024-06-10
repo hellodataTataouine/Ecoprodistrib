@@ -265,7 +265,7 @@ textarea {
 button[type="submit"],
 input[type="submit"] {
     border: none;
-    color: #fff;
+    color: #fbd579;
     padding: 18px 45px;
     display: inline-block;
     outline: 0;
@@ -572,7 +572,7 @@ ul.language-dropdown li:last-child a {
     padding: 15px 10px;
     font-size: 17px;
     text-transform: inherit;
-    color: #fff;
+    color: #fbd579;
     font-weight: 600;
     text-decoration: none;
     -webkit-transition: 0.5s;
@@ -643,7 +643,7 @@ ul.language-dropdown li:last-child a {
     top: 16px;
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
-    color: #fff;
+    color: #fbd579;
     font-size: 14px;
     -webkit-transition: 0.5s;
     transition: 0.5s;
@@ -752,7 +752,7 @@ li.submenus::after {
     font-size: 17px !important;
     border: none;
     outline: 0;
-    color: #fff;
+    color: #fbd579;
     padding: 14px 12px;
     background-color: inherit;
     font: inherit;
@@ -917,9 +917,9 @@ a.hero-boxed-btn {
     width: 295px;
     height: 60px;
     line-height: 60px;
-    color: #fff;
+    color: #fbd579;
     text-align: center;
-    border: 2px solid #fff;
+    border: 2px solid #fbd579;
     text-decoration: none;
     font-weight: 600;
     text-transform: uppercase;
@@ -976,7 +976,7 @@ a.hero-boxed-btn:hover::after {
     z-index: 1000;
 }
 .hero-features {
-    color: #fff;
+    color: #fbd579;
     position: relative;
     z-index: 100;
     padding: 0 15px;
@@ -1025,7 +1025,7 @@ a.hero-boxed-btn:hover::after {
     height: 60px;
     text-align: center;
     line-height: 60px;
-    color: #fff;
+    color: #fbd579;
     text-transform: uppercase;
     font-weight: 600;
     background-color: #0a3041;
@@ -1426,7 +1426,7 @@ ul.approach-lists {
     margin-top: -50px;
     transform: translate(-50%);
     font-size: 40px;
-    color: #fff;
+    color: #fbd579;
     font-weight: 400;
 }
 .statistics-section h5 {
@@ -1492,7 +1492,7 @@ a.contact-btn::after {
     font-family: "Font Awesome 5 Free";
     font-weight: 700;
     right: 35px;
-    color: #fff;
+    color: #fbd579;
     opacity: 0;
     -webkit-transition: 0.3s;
     transition: 0.3s;
@@ -2019,6 +2019,15 @@ ul.footer-links li a:hover {
 .footer-contact-info ul li i {
     color: #23c66c;
     font-size: 14px;
+}
+.main-menu li a:hover{
+    color: #fbd579;
+}
+.megamenu-cats ul li a:hover{
+    color: #fff;
+}
+.mega-dropdown-content .title a:hover {
+    color: #fff;
 }
 .footer-contact-info ul li span {
     font-weight: 400;

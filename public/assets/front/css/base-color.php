@@ -38,7 +38,7 @@ color: <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 .main-menu li.active a {
-color: <?php echo $color; ?>;
+color: #fff;
 }
 .main-menu li a::before {
 background-color: <?php echo $color; ?>;
@@ -123,20 +123,20 @@ a.readmore-btn {
 background-color: <?php echo $color; ?>;
 }
 ul.footer-links li a::after {
-color: <?php echo $color; ?>;
+color: #fff;
 }
 ul.footer-links li a:hover {
-color: <?php echo $color; ?>;
+color: #fbd579;
 }
 .footer-newsletter button[type="submit"]:hover, .footer-newsletter input[type="submit"]:hover {
 color: <?php echo $color; ?>;
 }
 .footer-newsletter button[type="submit"], .footer-newsletter input[type="submit"] {
 background-color: <?php echo $color; ?>;
-border: 1px solid <?php echo $color; ?>;
+border: 1px solid #fbd579;
 }
 .footer-contact-info ul li i {
-color: <?php echo $color; ?>;
+color: #fbd579;
 }
 .back-to-top {
 background-color: <?php echo $color; ?>;
@@ -233,7 +233,7 @@ color: <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 .main-menu li.dropdown ul.dropdown-lists li a::before {
-background-color: <?php echo $color; ?>;
+background-color: #fbd579;
 }
 .main-menu li.dropdown ul.dropdown-lists li.active a {
 background-color: <?php echo $color; ?>;

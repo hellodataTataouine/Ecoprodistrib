@@ -684,7 +684,7 @@ a.readmore-btn {
   margin-top: 18px;
   font-size: 18px;
   background-color: #25d06f;
-  color: #fff;
+  color: #fbd579;
   padding: 13px 0 10px;
   text-align: center;
   width: 120px;
@@ -705,7 +705,7 @@ a.readmore-btn::after {
   position: absolute;
   content: "\f101";
   font-family: "Font Awesome 5 Free";
-  font-weight: 700;
+  font-weight: 400;
   right: 15px;
   opacity: 0;
   -webkit-transition: 0.5s;
@@ -1629,7 +1629,7 @@ span.fc-title {
 a.boxed-btn {
   padding: 20px;
   display: inline-block;
-  color: #fff;
+  color: #fbd579;
   background-color: #25d06f;
   text-transform: uppercase;
   font-size: 14px;
