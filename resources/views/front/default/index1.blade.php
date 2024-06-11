@@ -67,10 +67,16 @@
                     @default
 
                 @endswitch
-
+                <style>
+                    .feature_link{
+                        text-decoration: none; /* Remove underline */
+                        color: inherit; /* Inherit text color */
+                        cursor: pointer;
+                    }
+                </style>
                     <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
                     <div class="outer-container">
-                        <a href="{{$link}}" style="cursor: pointer;">
+                        <a href="{{$link}}" class="feature_link">
                         <div class="inner-container">
                             <div class="icon-wrapper">
                             <i class="{{$feature->icon}}"></i>
