@@ -84,6 +84,7 @@
                 <div class="row text-center">
                 <div class="col-lg-6 offset-lg-3">
                     <span class="section-title">{{convertUtf8($bs->service_section_title)}}</span>
+                    <br><br>
                     {{-- <h2 class="section-summary">{{convertUtf8($bs->service_section_subtitle)}}</h2> --}}
                 </div>
                 </div>
