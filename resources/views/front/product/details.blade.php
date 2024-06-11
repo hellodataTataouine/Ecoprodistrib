@@ -34,7 +34,7 @@
                 <div class="product-item-slide ">
                     {{-- @foreach ($product->product_images as $image) --}}
                     <div class="item pt-30">
-                        <a class="image-popup" href="{{asset('assets/uploads/media/'.$product->feature_image)}}"><img src="{{asset('assets/uploads/media/'$product->feature_image)}}" alt=""></a>
+                        <a class="image-popup" href="{{asset('assets/uploads/media/'.$product->feature_image)}}"><img src="{{asset('assets/uploads/media/'.$product->feature_image)}}" alt=""></a>
                     </div>
                     {{-- @endforeach --}}
                 </div>
