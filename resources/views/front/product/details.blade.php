@@ -41,7 +41,7 @@
                 <div class="product-details-slide-item mt-30">
                     <ul class="d-flex">
                         @foreach ($product->product_images as $image)
-                        <li><img src="{{asset('assets/front/img/product/sliders/'.$image->image)}}" alt=""></li>
+                        <li><img src="{{asset('assets/uploads/media/'.$image->image)}}" alt=""></li>
                         @endforeach
                     </ul>
                 </div>
