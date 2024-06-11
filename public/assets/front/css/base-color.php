@@ -146,7 +146,7 @@ border: 1px solid <?php echo $color; ?>;
 color: <?php echo $color; ?>;
 }
 ul.breadcumb li a:hover {
-color: <?php echo $color; ?>;
+color: #fbd579;
 }
 .main-menu li a:hover {
 color: #fff;
