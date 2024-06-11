@@ -1515,7 +1515,7 @@ a.cart-add-link {
 }
 a.cart-add-link:hover{
     color: #fff;
-    background-color: #212529;
+    background-color: #fbd579;
 }
 a.contact-btn:hover::after {
     visibility: visible;
