@@ -30,7 +30,7 @@
         <div class="row justify-content-between align-items-center">
             <div class="col-lg-3 col-md-6">
                 <div class="shop-search mt-30">
-                    <input type="text" placeholder="Search Keywords" class="input-search" name="search" value="{{request()->input('search') ? request()->input('search') : ''}}">
+                    <input type="text" placeholder="Rechercher" class="input-search" name="search" value="{{request()->input('search') ? request()->input('search') : ''}}">
                     <i  class="fas fa-search input-search-btn cursor-pointer"></i>
                 </div>
             </div>

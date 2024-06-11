@@ -149,7 +149,7 @@ ul.breadcumb li a:hover {
 color: <?php echo $color; ?>;
 }
 .main-menu li a:hover {
-color: <?php echo $color; ?>;
+color: #fff;
 }
 .approach-icon-wrapper {
 border: 1px solid <?php echo $color; ?>;
@@ -301,7 +301,7 @@ color: <?php echo $color; ?>;
 }
 
 .mega-dropdown:hover a.dropbtn {
-color: <?php echo $color; ?>;
+color: #fff;
 }
 
 .mega-dropdown .dropbtn::before {
