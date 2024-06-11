@@ -34,16 +34,51 @@
                         background-color: rgb(0 0 0 / 50%);
                     }
                 </style>
-                <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
-                <div class="outer-container">
-                    <div class="inner-container">
-                        <div class="icon-wrapper">
-                        <i class="{{$feature->icon}}"></i>
+                @php
+                    $link="";
+                @endphp
+                @switch($feature->title)
+                    @case("Gamme Carton")
+                        @php
+                            $link="/service/L'emballage-Carton";
+                        @endphp
+
+                        @break
+                    @case("Gamme Boisson")
+                        @php
+                            $link="/service/La-Gamme-boisson";
+                        @endphp
+                        @break
+                    @case("Hygiène et Entretien")
+                        @php
+                            $link="/service/Produits-d'hygiène-et-d'entretien";
+                        @endphp
+                        @break
+                    @case("Gamme Bois/Bambou")
+                        @php
+                            $link="/service/L'emballage-boisbambou";
+                        @endphp
+                        @break
+                    @case("Gamme Plastique")
+                        @php
+                            $link="/service/L'emballage-en-plastique";
+                        @endphp
+                        @break
+                    @default
+
+                @endswitch
+                <a href="{{$link}}" style="cursor: pointer;">
+                    <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
+                    <div class="outer-container">
+                        <div class="inner-container">
+                            <div class="icon-wrapper">
+                            <i class="{{$feature->icon}}"></i>
+                            </div>
+                            <h3>{{convertUtf8($feature->title)}}</h3>
                         </div>
-                        <h3>{{convertUtf8($feature->title)}}</h3>
                     </div>
-                </div>
-            </div>
+                    </div>
+                </a>
             @endforeach
           </div>
        </div>
