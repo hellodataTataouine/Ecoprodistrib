@@ -37,14 +37,14 @@
                         @php
                             dd($product->feature_image);
                         @endphp
-                        <a class="image-popup" href="{{asset('assets/uploads/media/'.$product->feature_image)}}"><img src="{{asset('assets/uploads/media/'.$product->feature_image)}}" alt=""></a>
+                        <a class="image-popup" href="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}"><img src="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}" alt=""></a>
                     </div>
                     {{-- @endforeach --}}
                 </div>
                 <div class="product-details-slide-item mt-30">
                     <ul class="d-flex">
                         {{-- @foreach ($product->product_images as $image) --}}
-                        <li><img src="{{asset('assets/uploads/media/'.$product->feature_image)}}" alt=""></li>
+                        <li><img src="{{asset('assets/front/img/product/featured/'.$product->feature_image)}}" alt=""></li>
                         {{-- @endforeach --}}
                     </ul>
                 </div>
