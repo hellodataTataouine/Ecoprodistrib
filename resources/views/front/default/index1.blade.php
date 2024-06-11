@@ -73,6 +73,11 @@
                         color: inherit; /* Inherit text color */
                         cursor: pointer;
                     }
+                    .feature_link:hover{
+                        text-decoration: none; /* Remove underline */
+                        color: inherit; /* Inherit text color */
+                        cursor: pointer;
+                    }
                 </style>
                     <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
                     <div class="outer-container">
