@@ -32,17 +32,17 @@
         <div class="row">
             <div class="col-lg-6">
                 <div class="product-item-slide ">
-                    @foreach ($product->product_images as $image)
+                    {{-- @foreach ($product->product_images as $image) --}}
                     <div class="item pt-30">
-                        <a class="image-popup" href="{{asset('assets/front/img/product/sliders/'.$image->image)}}"><img src="{{asset('assets/front/img/product/sliders/'.$image->image)}}" alt=""></a>
+                        <a class="image-popup" href="{{asset('assets/uploads/media/'.$product->feature_image)}}"><img src="{{asset('assets/uploads/media/'$product->feature_image)}}" alt=""></a>
                     </div>
-                    @endforeach
+                    {{-- @endforeach --}}
                 </div>
                 <div class="product-details-slide-item mt-30">
                     <ul class="d-flex">
-                        @foreach ($product->product_images as $image)
-                        <li><img src="{{asset('assets/uploads/media/'.$image->image)}}" alt=""></li>
-                        @endforeach
+                        {{-- @foreach ($product->product_images as $image) --}}
+                        <li><img src="{{asset('assets/uploads/media/'.$product->feature_image)}}" alt=""></li>
+                        {{-- @endforeach --}}
                     </ul>
                 </div>
             </div>
