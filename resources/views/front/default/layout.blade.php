@@ -219,8 +219,8 @@
             <div class="breadcrumb-txt">
                 <div class="row">
                     <div class="col-xl-7 col-lg-8 col-sm-10">
-                        <span>@yield('breadcrumb-title')</span>
-                        <h1>@yield('breadcrumb-subtitle')</h1>
+                        {{-- <span>@yield('breadcrumb-title')</span>
+                        <h1>@yield('breadcrumb-subtitle')</h1> --}}
                         <ul class="breadcumb">
                         <li><a href="{{route('front.index')}}">{{__('Home')}}</a></li>
                         <li>@yield('breadcrumb-link')</li>
