@@ -67,18 +67,20 @@
                     @default
 
                 @endswitch
-                <a href="{{$link}}" style="cursor: pointer;">
+
                     <div class="col single-hero-feature sf{{$feature->id}}" style="background-color: rgb(0 0 0 / 50%);">
                     <div class="outer-container">
+                        <a href="{{$link}}" style="cursor: pointer;">
                         <div class="inner-container">
                             <div class="icon-wrapper">
                             <i class="{{$feature->icon}}"></i>
                             </div>
                             <h3>{{convertUtf8($feature->title)}}</h3>
                         </div>
+                        </a>
                     </div>
                     </div>
-                </a>
+
             @endforeach
           </div>
        </div>
